@@ -1,0 +1,79 @@
+.about__hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 120px 0;
+}
+
+.about__hero-content {
+  max-width: 700px;
+  color: #fff;
+}
+
+.about__title {
+  font-size: 56px;
+  margin-bottom: 24px;
+}
+
+.about__description {
+  font-size: 20px;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+.about__mission {
+  background: var(--background);
+}
+
+.about__mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.about__mission-item {
+  padding: 32px;
+  background: var(--background-alt);
+  border-radius: var(--radius);
+}
+
+.about__mission-item h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+
+.about__mission-item p {
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.about__team {
+  background: var(--background-alt);
+}
+
+.about__team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.about__values {
+  background: var(--background);
+}
+
+@media (max-width: 968px) {
+  .about__mission-grid,
+  .about__team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .about__title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about__mission-grid,
+  .about__team-grid {
+    grid-template-columns: 1fr;
+  }
+}

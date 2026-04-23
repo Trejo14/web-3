@@ -1,0 +1,39 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.features__item {
+  text-align: center;
+  padding: 24px;
+}
+
+.features__icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.features__title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.features__description {
+  color: var(--text-light);
+}
+
+@media (max-width: 968px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}

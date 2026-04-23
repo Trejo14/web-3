@@ -1,0 +1,33 @@
+.home__features {
+  background: var(--background);
+}
+
+.home__services {
+  background: var(--background-alt);
+}
+
+.home__services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.home__testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 968px) {
+  .home__services-grid,
+  .home__testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .home__services-grid,
+  .home__testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}

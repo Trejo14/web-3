@@ -1,0 +1,37 @@
+.contact__hero {
+  background: linear-gradient(135deg, var(--background-alt) 0%, var(--background) 100%);
+  padding: 120px 0 80px;
+  text-align: center;
+}
+
+.contact__title {
+  font-size: 56px;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.contact__subtitle {
+  font-size: 20px;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact__info {
+  background: var(--background);
+}
+
+.contact__form {
+  background: var(--background-alt);
+}
+
+.contact__form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .contact__title {
+    font-size: 40px;
+  }
+}

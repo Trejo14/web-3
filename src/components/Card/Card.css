@@ -1,0 +1,22 @@
+.card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.card__title {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.card__content {
+  color: var(--text-light);
+}
+
+.card--hover:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}

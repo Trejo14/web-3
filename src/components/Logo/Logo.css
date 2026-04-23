@@ -1,0 +1,39 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo__icon {
+  font-size: 24px;
+}
+
+.logo__text {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Sizes */
+.logo--small .logo__icon {
+  font-size: 18px;
+}
+
+.logo--small .logo__text {
+  font-size: 18px;
+}
+
+.logo--medium .logo__icon {
+  font-size: 24px;
+}
+
+.logo--medium .logo__text {
+  font-size: 22px;
+}
+
+.logo--large .logo__icon {
+  font-size: 32px;
+}
+
+.logo--large .logo__text {
+  font-size: 28px;
+}
