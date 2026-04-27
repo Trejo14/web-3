@@ -4,7 +4,7 @@ Este es un proyecto de una aplicación web desarrollada con [React](https://reac
 
 Consiste en un sitio web corporativo o portafolio interactivo (SPA) que incluye distintas secciones para mostrar información de la empresa, servicios ofrecidos, proyectos realizados y una página de contacto.
 
-## 🚀 Características
+## Características
 
 - **Navegación fluida:** Uso de `react-router-dom` para una experiencia SPA (Single Page Application) sin recargas de página.
 - **Componentes modulares:** Arquitectura basada en componentes reutilizables como Botones, Tarjetas (Cards), Formularios de contacto, Navbar, Footer, entre otros.
@@ -23,7 +23,7 @@ Consiste en un sitio web corporativo o portafolio interactivo (SPA) que incluye 
 - **[React Router DOM v6](https://reactrouter.com/)** - Enrutamiento de la aplicación.
 - **[ESLint](https://eslint.org/)** - Para el análisis y mantenimiento de la calidad del código.
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```text
 web-3/
@@ -39,7 +39,7 @@ web-3/
 └── vite.config.js      # Configuración de Vite
 ```
 
-## ⚙️ Instalación y ejecución local
+## Instalación y ejecución local
 
 Sigue estos pasos para correr el proyecto en tu máquina de manera local:
 
@@ -60,7 +60,7 @@ Sigue estos pasos para correr el proyecto en tu máquina de manera local:
 4. **Abre en tu navegador:**
    La aplicación estará disponible típicamente en `http://localhost:5173/`.
 
-## 📦 Construcción para producción
+## Construcción para producción
 
 Para crear una versión optimizada del proyecto, lista para ser subida a un servidor o servicio de hosting, ejecuta:
 
