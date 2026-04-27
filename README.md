@@ -16,7 +16,7 @@ Consiste en un sitio web corporativo o portafolio interactivo (SPA) que incluye 
   - `Contact`: Formulario de contacto.
 - **Arranque rápido:** Incluye un archivo `arrancar.bat` para iniciar el entorno de desarrollo fácilmente en Windows.
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - **[React 18](https://react.dev/)** - Biblioteca principal para la construcción de interfaces de usuario.
 - **[Vite](https://vitejs.dev/)** - Entorno de desarrollo súper rápido y empaquetador moderno.
@@ -69,3 +69,17 @@ npm run build
 ```
 
 Esto generará una carpeta `dist` con los archivos estáticos minimizados y listos para producción.
+
+## Autores
+
+* **Angel Eliseo Choperena Jimenez**
+angelchope39@gmail.com
+
+* **Adolfo Salinas Bautista**
+adolfosalinas811@gmail.com
+
+* **Jose Luis Resendiz Butron**
+joseluisresendizbutron@gmail.com
+
+* **Daniel Trejo Galindo**
+danieltrejo275@gmail.com
