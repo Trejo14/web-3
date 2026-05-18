@@ -10,26 +10,19 @@ function Projects() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('https://api.github.com/users/google/repos?sort=updated&per_page=12')
-      .then(response => {
-        if (!response.ok) throw new Error('Error al cargar proyectos')
-        return response.json()
-      })
-      .then(data => {
-        const formattedProjects = data.map(repo => ({
-          title: repo.name,
-          description: repo.description || 'Sin descripción disponible',
-          tags: [repo.language || 'GitHub'].filter(Boolean),
-          link: repo.html_url,
-          stars: repo.stargazers_count
-        }))
-        setProjects(formattedProjects)
-        setLoading(false)
-      })
-      .catch(err => {
-        setError(err.message)
-        setLoading(false)
-      })
+    const localProjects = [
+      { title: "E-Commerce", description: "Plataforma de comercio electrónico completa con panel de administración, pasarela de pagos y gestión de inventario.", tags: ["React", "Node.js", "MongoDB"], link: "https://github.com/AngelChJ/ProyectoUmad", stars: 124 },
+      { title: "Health App", description: "Aplicación móvil para seguimiento de salud y bienestar con integración de dispositivos wearable.", tags: ["React Native", "Firebase"], link: "https://github.com/asapAdolf/SmarTracker", stars: 89 },
+      { title: "Inmobiliaria", description: "Dashboard empresarial para la gestión de propiedades y clientes.", tags: ["React", "Next.js"], link: "https://github.com/Trejo14/WEB", stars: 56 },
+      { title: "Learning Platform", description: "Plataforma de educación en línea con cursos, evaluaciones y certificación.", tags: ["Angular", "Python", "PostgreSQL"], link: "https://github.com/", stars: 234 },
+      { title: "Ciberseguridad", description: "Herramienta educativa para proteger tus dispositivos de amenazas cibernéticas.", tags: ["Vite", "Redux", "TailwindCSS"], link: "https://github.com/", stars: 178 },
+      { title: "Logística", description: "Sistema de gestión logística con tracking en tiempo real y optimización de rutas.", tags: ["Node.js", "GraphQL", "Redis"], link: "https://github.com/", stars: 67 }
+    ]
+    
+    setTimeout(() => {
+      setProjects(localProjects)
+      setLoading(false)
+    }, 500)
   }, [])
 
   const toggleFavorite = (index) => {
