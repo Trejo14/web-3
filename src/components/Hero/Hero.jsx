@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import './Hero.css'
@@ -9,10 +10,21 @@ function Hero({
   ctaLink = "/contact",
   image = null
 }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(true)
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <section className="hero">
+    <section className={`hero ${loaded ? 'loaded' : ''}`}>
       <div className="hero__container container">
-        <div className="hero__content">
+        <div className={`hero__content ${isVisible ? 'visible' : ''}`}>
           <h1 className="hero__title">{title}</h1>
           <p className="hero__subtitle">{subtitle}</p>
           <div className="hero__cta">
@@ -25,7 +37,7 @@ function Hero({
           </div>
         </div>
         {image && (
-          <div className="hero__image">
+          <div className={`hero__image ${isVisible ? 'visible' : ''}`}>
             <img src={image} alt={title} />
           </div>
         )}

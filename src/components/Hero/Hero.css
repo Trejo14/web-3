@@ -76,3 +76,34 @@
     flex-direction: column;
   }
 }
+
+.hero.loaded {
+  opacity: 1;
+}
+
+.hero {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero__content {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+}
+
+.hero__content.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero__image {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease 0.2s;
+}
+
+.hero__image.visible {
+  opacity: 1;
+  transform: translateX(0);
+}

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from '../Button/Button'
 import './ContactForm.css'
 
-function ContactForm() {
+function ContactForm({ onSuccess }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,6 +12,8 @@ function ContactForm() {
     message: ''
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -19,16 +21,20 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Mensaje enviado correctamente. Nos contactaremos pronto.')
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      service: '',
-      message: ''
-    })
+    setIsSubmitting(true)
+    setTimeout(() => {
+      console.log('Form submitted:', formData)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        message: ''
+      })
+      setIsSubmitting(false)
+      if (onSuccess) onSuccess()
+    }, 500)
   }
 
   return (
@@ -118,8 +124,8 @@ function ContactForm() {
         ></textarea>
       </div>
 
-      <Button type="submit" variant="primary" size="large" fullWidth>
-        Enviar mensaje
+      <Button type="submit" variant="primary" size="large" fullWidth disabled={isSubmitting}>
+        {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
       </Button>
     </form>
   )
