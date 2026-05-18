@@ -54,7 +54,6 @@ En la sección de **Proyectos** (`src/pages/Projects/Projects.jsx`), la aplicaci
 A continuación se muestra una visión general de la arquitectura de archivos del proyecto:
 
 ```text
-├── 📁 .gemini            # Directorio del agente de asistencia
 ├── 📁 node_modules       # Dependencias del proyecto (generado al instalar)
 ├── 📁 src                # Código fuente principal de la aplicación
 │   ├── 📁 components     # Componentes visuales y de interfaz reutilizables
@@ -105,3 +104,14 @@ Este script:
     npm run dev
     ```
 3.  Abre el navegador en la dirección provista en la terminal (usualmente [http://localhost:5173/](http://localhost:5173/)).
+
+---
+
+## 👥 Autores
+
+Este proyecto fue desarrollado por:
+
+*   **Adolfo Salinas**
+*   **Daniel Trejo**
+*   **Angel Choperena**
+*   **Jose Luis Resendiz**
