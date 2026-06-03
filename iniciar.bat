@@ -1,7 +1,7 @@
 @echo off
-title TechCorp - Servidor de Desarrollo
+title BirdStack - Servidor de Desarrollo
 echo ========================================
-echo   TechCorp - Soluciones Digitales
+echo   BirdStack - Soluciones Digitales
 echo ========================================
 echo.
 
