@@ -18,7 +18,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar__container container">
         <Link to="/" className="navbar__logo">
-          <Logo text="TechCorp" />
+          <Logo text="BirdStack" />
         </Link>
         
         <ul className="navbar__links">

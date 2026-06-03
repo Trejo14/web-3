@@ -1,3 +1,4 @@
+import { Target, Eye, Heart } from 'lucide-react'
 import TeamCard from '../../components/TeamCard/TeamCard'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
@@ -13,10 +14,9 @@ function About() {
   ]
 
   const values = [
-    { icon: "🤝", title: "Compromiso", description: "Nos comprometemos al 100% con cada proyecto" },
-    { icon: "🎯", title: "Calidad", description: "Estándares altos en cada entrega" },
-    { icon: "💡", title: "Innovación", description: "Siempre buscando nuevas soluciones" },
-    { icon: "❤️", title: "Pasión", description: "Amamos lo que hacemos" },
+    { icon: <Heart size={28} />, title: "Compromiso", description: "Nos comprometemos al 100% con cada proyecto" },
+    { icon: <Target size={28} />, title: "Calidad", description: "Estándares altos en cada entrega" },
+    { icon: <Eye size={28} />, title: "Visión", description: "Siempre buscando nuevas soluciones" },
   ]
 
   return (
@@ -24,40 +24,41 @@ function About() {
       <section className="about__hero section">
         <div className="container">
           <div className="about__hero-content">
-            <h1 className="about__title">Sobre TechCorp</h1>
+            <span className="about__badge">Nosotros</span>
+            <h1 className="about__title">Sobre BirdStack</h1>
             <p className="about__description">
-              Founded in 2015, TechCorp is a leading technology company specialized in digital 
-              solutions. Our mission is to transform businesses through innovation and technology.
+              Nacimos para transformar ideas en soluciones digitales innovadoras. 
+              Nuestra misión es impulsar negocios a través de tecnología y creatividad.
             </p>
             <Button variant="primary" size="large">Únete a nuestro equipo</Button>
           </div>
         </div>
       </section>
 
-      <section className="about__mission section">
+      <section className="section">
         <div className="container">
           <div className="about__mission-grid">
             <div className="about__mission-item">
               <h3>Misión</h3>
-              <p>Transformar businesses through innovative technological solutions that drive growth and digital success.</p>
+              <p>Transformar negocios a través de soluciones tecnológicas innovadoras que impulsen el crecimiento y el éxito digital.</p>
             </div>
             <div className="about__mission-item">
               <h3>Visión</h3>
-              <p>Ser la empresa líder en soluciones digitales, recognized por la calidad y excelencia en cada proyecto.</p>
+              <p>Ser la empresa líder en soluciones digitales, reconocida por la calidad y excelencia en cada proyecto.</p>
             </div>
             <div className="about__mission-item">
               <h3>Valores</h3>
-              <p>Innovation, calidad, compromiso y focus en el cliente son nuestros pilares fundamentales.</p>
+              <p>Innovación, calidad, compromiso y enfoque en el cliente son nuestros pilares fundamentales.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="about__team section">
+      <section className="section section-alt">
         <div className="container">
           <SectionTitle 
             title="Nuestro Equipo" 
-            subtitle="Conoce a las personas detrás de TechCorp"
+            subtitle="Conoce a las personas detrás de BirdStack"
           />
           <div className="about__team-grid">
             {team.map((member, index) => (
@@ -67,7 +68,7 @@ function About() {
         </div>
       </section>
 
-      <section className="about__values section">
+      <section className="section">
         <div className="container">
           <SectionTitle 
             title="Nuestros Valores" 

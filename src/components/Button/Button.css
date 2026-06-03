@@ -1,78 +1,74 @@
-.button {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   font-weight: 600;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   transition: var(--transition);
   cursor: pointer;
+  white-space: nowrap;
 }
 
-/* Variants */
-.button--primary {
-  background: var(--primary);
+.btn--primary {
+  background: var(--text);
   color: #fff;
 }
 
-.button--primary:hover:not(:disabled) {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+.btn--primary:hover:not(:disabled) {
+  background: #27272a;
 }
 
-.button--secondary {
-  background: var(--secondary);
-  color: #fff;
-}
-
-.button--secondary:hover:not(:disabled) {
-  background: #475569;
-  transform: translateY(-2px);
-}
-
-.button--outline {
-  background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-
-.button--outline:hover:not(:disabled) {
-  background: var(--primary);
-  color: #fff;
-}
-
-.button--ghost {
-  background: transparent;
+.btn--secondary {
+  background: var(--bg-alt);
   color: var(--text);
 }
 
-.button--ghost:hover:not(:disabled) {
-  background: var(--background-alt);
+.btn--secondary:hover:not(:disabled) {
+  background: var(--border);
 }
 
-/* Sizes */
-.button--small {
-  padding: 8px 16px;
+.btn--outline {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+
+.btn--outline:hover:not(:disabled) {
+  border-color: var(--text);
+  background: var(--bg-alt);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-light);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.btn--small {
+  padding: 8px 18px;
   font-size: 14px;
 }
 
-.button--medium {
-  padding: 12px 24px;
+.btn--medium {
+  padding: 10px 22px;
+  font-size: 15px;
+}
+
+.btn--large {
+  padding: 14px 28px;
   font-size: 16px;
 }
 
-.button--large {
-  padding: 16px 32px;
-  font-size: 18px;
-}
-
-/* States */
-.button--full {
+.btn--full {
   width: 100%;
 }
 
-.button:disabled {
-  opacity: 0.5;
+.btn:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }

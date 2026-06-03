@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Loader2, AlertCircle } from 'lucide-react'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import './Projects.css'
@@ -51,21 +52,32 @@ function Projects() {
     <div className="projects">
       <section className="projects__hero section">
         <div className="container">
+          <span className="projects__badge">Portafolio</span>
           <h1 className="projects__title">Nuestros Proyectos</h1>
           <p className="projects__subtitle">
-            Explora algunos de los proyectos que hemos realizado para nuestros clientes.
+            Explora los proyectos que hemos realizado y nuestras contribuciones open source.
           </p>
         </div>
       </section>
 
-      <section className="projects__list section">
+      <section className="section">
         <div className="container">
           <SectionTitle 
-            title="Portafolio" 
+            title="Proyectos recientes" 
             subtitle="Proyectos destacando nuestro expertise técnico"
           />
-          {loading && <p className="loading">Cargando proyectos...</p>}
-          {error && <p className="error">Error: {error}</p>}
+          {loading && (
+            <div className="projects__status">
+              <Loader2 size={24} className="spin" />
+              <p>Cargando proyectos...</p>
+            </div>
+          )}
+          {error && (
+            <div className="projects__status projects__status--error">
+              <AlertCircle size={24} />
+              <p>Error: {error}</p>
+            </div>
+          )}
           {!loading && !error && (
             <div className="projects__grid">
               {projects.map((project, index) => (

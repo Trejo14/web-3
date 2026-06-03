@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight, Code2, Smartphone, Cloud, Palette, Shield, Briefcase } from 'lucide-react'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
@@ -7,25 +8,26 @@ import './Services.css'
 
 function Services() {
   const services = [
-    { icon: "🌐", title: "Desarrollo Web", description: "Creamos sitios web modernos, aplicaciones web progresivas y plataformas personalizadas usando las últimas tecnologías como React, Vue, Angular y más.", price: "Desde $999" },
-    { icon: "📱", title: "Apps Móviles", description: "Desarrollamos aplicaciones nativas para iOS y Android, así como apps híbridas que funcionan en todas las plataformas.", price: "Desde $2,499" },
-    { icon: "☁️", title: "Cloud", description: "Servicios de infraestructura en la nube, migraciones, configuraciones y optimización de AWS, Azure y Google Cloud.", price: "Desde $399" },
-    { icon: "🎨", title: "UI/UX Design", description: "Diseño de interfaces de usuario y experiencia de usuario, prototipos, testes de usabilidad y design systems.", price: "Desde $699" },
-    { icon: "🔒", title: "Ciberseguridad", description: "Auditorías de seguridad, pruebas de penetración, análisis de vulnerabilidades y soluciones de protección.", price: "Desde $899" },
-    { icon: "💼", title: "Consultoría", description: "Asesoría tecnológica, arquitectura de software, optimización de procesos y estrategia digital.", price: "Desde $299" },
+    { icon: <Code2 size={40} />, title: "Desarrollo Web", description: "Creamos sitios web modernos, aplicaciones web progresivas y plataformas personalizadas.", features: ["React, Vue, Angular", "PWAs", "API development"], price: "Desde $999" },
+    { icon: <Smartphone size={40} />, title: "Apps Móviles", description: "Aplicaciones nativas para iOS y Android, así como apps híbridas multiplataforma.", features: ["iOS & Android", "React Native, Flutter", "App Store deploy"], price: "Desde $2,499" },
+    { icon: <Cloud size={40} />, title: "Cloud", description: "Infraestructura en la nube, migraciones y optimización de AWS, Azure y Google Cloud.", features: ["Arquitectura cloud", "Migraciones", "DevOps"], price: "Desde $399" },
+    { icon: <Palette size={40} />, title: "UI/UX Design", description: "Diseño de interfaces y experiencia de usuario, prototipos, testing y design systems.", features: ["Wireframes", "Prototipos", "Design systems"], price: "Desde $699" },
+    { icon: <Shield size={40} />, title: "Ciberseguridad", description: "Auditorías de seguridad, pruebas de penetración y soluciones de protección.", features: ["Auditorías", "Pen testing", "Cumplimiento"], price: "Desde $899" },
+    { icon: <Briefcase size={40} />, title: "Consultoría", description: "Asesoría tecnológica, arquitectura de software y estrategia digital.", features: ["Arquitectura", "Code review", "Estrategia"], price: "Desde $299" },
   ]
 
   const process = [
-    { icon: "1", title: "Análisis", description: "Estudiamos tus necesidades y objetivos" },
-    { icon: "2", title: "Propuesta", description: "Presentamos una solución personalizada" },
-    { icon: "3", title: "Desarrollo", description: "Implementamos la solución acordada" },
-    { icon: "4", title: "Entrega", description: "Entregamos y damos soporte continuo" },
+    { icon: <Code2 size={28} />, title: "Análisis", description: "Estudiamos tus necesidades y objetivos" },
+    { icon: <Code2 size={28} />, title: "Propuesta", description: "Presentamos una solución personalizada" },
+    { icon: <Code2 size={28} />, title: "Desarrollo", description: "Implementamos la solución acordada" },
+    { icon: <Code2 size={28} />, title: "Entrega", description: "Entregamos y damos soporte continuo" },
   ]
 
   return (
     <div className="services">
       <section className="services__hero section">
         <div className="container">
+          <span className="services__badge">Servicios</span>
           <h1 className="services__title">Nuestros Servicios</h1>
           <p className="services__subtitle">
             Ofrecemos soluciones tecnológicas completas adaptadas a las necesidades de tu negocio.
@@ -33,7 +35,7 @@ function Services() {
         </div>
       </section>
 
-      <section className="services__list section">
+      <section className="section">
         <div className="container">
           <SectionTitle 
             title="Explora nuestros servicios" 
@@ -47,23 +49,25 @@ function Services() {
         </div>
       </section>
 
-      <section className="services__process section">
+      <section className="section section-alt">
         <div className="container">
           <SectionTitle 
             title="Nuestro Proceso" 
             subtitle="Así trabajamos en cada proyecto"
           />
-          <Features items={process.map(p => ({ ...p, icon: p.icon === "1" ? "📋" : p.icon === "2" ? "📝" : p.icon === "3" ? "⚙️" : "🚀", title: p.title, description: p.description }))} />
+          <Features items={process} />
         </div>
       </section>
 
-      <section className="services__cta section">
+      <section className="services__cta">
         <div className="container">
           <div className="services__cta-content">
             <h2>¿Listo para empezar tu proyecto?</h2>
             <p>Contáctanos hoy y recibe una consulta gratuita</p>
             <Link to="/contact">
-              <Button variant="primary" size="large">Contáctanos</Button>
+              <Button variant="primary" size="large">
+                Contáctanos <ArrowRight size={18} />
+              </Button>
             </Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
+import { ChevronRight } from 'lucide-react'
 import './Hero.css'
 
 function Hero({ 
@@ -10,26 +11,26 @@ function Hero({
   ctaLink = "/contact",
   image = null
 }) {
-  const [isVisible, setIsVisible] = useState(false)
-  const [loaded, setLoaded] = useState(false)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    setLoaded(true)
-    const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, 100)
+    const timer = setTimeout(() => setVisible(true), 50)
     return () => clearTimeout(timer)
   }, [])
 
   return (
-    <section className={`hero ${loaded ? 'loaded' : ''}`}>
+    <section className={`hero ${visible ? 'hero--visible' : ''}`}>
       <div className="hero__container container">
-        <div className={`hero__content ${isVisible ? 'visible' : ''}`}>
+        <div className="hero__content">
+          <span className="hero__badge">Soluciones Digitales</span>
           <h1 className="hero__title">{title}</h1>
           <p className="hero__subtitle">{subtitle}</p>
           <div className="hero__cta">
             <Link to={ctaLink}>
-              <Button variant="primary" size="large">{ctaText}</Button>
+              <Button variant="primary" size="large">
+                {ctaText}
+                <ChevronRight size={18} />
+              </Button>
             </Link>
             <Link to="/projects">
               <Button variant="outline" size="large">Ver proyectos</Button>
@@ -37,7 +38,7 @@ function Hero({
           </div>
         </div>
         {image && (
-          <div className={`hero__image ${isVisible ? 'visible' : ''}`}>
+          <div className="hero__image">
             <img src={image} alt={title} />
           </div>
         )}

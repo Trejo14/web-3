@@ -15,7 +15,7 @@ function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`button button--${variant} button--${size} ${fullWidth ? 'button--full' : ''} ${className}`}
+      className={`btn btn--${variant} btn--${size} ${fullWidth ? 'btn--full' : ''} ${className}`}
     >
       {children}
     </button>

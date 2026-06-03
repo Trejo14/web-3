@@ -1,39 +1,42 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.logo__icon {
-  font-size: 24px;
+.logo__mark {
+  flex-shrink: 0;
 }
 
 .logo__text {
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text);
 }
 
-/* Sizes */
-.logo--small .logo__icon {
-  font-size: 18px;
+.logo--small .logo__mark {
+  width: 22px;
+  height: 22px;
 }
 
 .logo--small .logo__text {
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.logo--medium .logo__icon {
-  font-size: 24px;
+.logo--medium .logo__mark {
+  width: 28px;
+  height: 28px;
 }
 
 .logo--medium .logo__text {
-  font-size: 22px;
+  font-size: 20px;
 }
 
-.logo--large .logo__icon {
-  font-size: 32px;
+.logo--large .logo__mark {
+  width: 36px;
+  height: 36px;
 }
 
 .logo--large .logo__text {
-  font-size: 28px;
+  font-size: 26px;
 }

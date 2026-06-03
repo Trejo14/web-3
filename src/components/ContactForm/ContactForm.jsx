@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Send, Loader2 } from 'lucide-react'
 import Button from '../Button/Button'
 import './ContactForm.css'
 
@@ -23,7 +24,6 @@ function ContactForm({ onSuccess }) {
     e.preventDefault()
     setIsSubmitting(true)
     setTimeout(() => {
-      console.log('Form submitted:', formData)
       setFormData({
         name: '',
         email: '',
@@ -50,6 +50,7 @@ function ContactForm({ onSuccess }) {
             value={formData.name}
             onChange={handleChange}
             required
+            placeholder="Juan Pérez"
           />
         </div>
         <div className="contact-form__group">
@@ -62,6 +63,7 @@ function ContactForm({ onSuccess }) {
             value={formData.email}
             onChange={handleChange}
             required
+            placeholder="juan@ejemplo.com"
           />
         </div>
       </div>
@@ -76,6 +78,7 @@ function ContactForm({ onSuccess }) {
             className="contact-form__input"
             value={formData.phone}
             onChange={handleChange}
+            placeholder="+52 111 222 3344"
           />
         </div>
         <div className="contact-form__group">
@@ -87,6 +90,7 @@ function ContactForm({ onSuccess }) {
             className="contact-form__input"
             value={formData.company}
             onChange={handleChange}
+            placeholder="Mi Empresa S.A."
           />
         </div>
       </div>
@@ -125,7 +129,11 @@ function ContactForm({ onSuccess }) {
       </div>
 
       <Button type="submit" variant="primary" size="large" fullWidth disabled={isSubmitting}>
-        {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+        {isSubmitting ? (
+          <>Enviando... <Loader2 size={18} className="spin" /></>
+        ) : (
+          <>Enviar mensaje <Send size={18} /></>
+        )}
       </Button>
     </form>
   )
