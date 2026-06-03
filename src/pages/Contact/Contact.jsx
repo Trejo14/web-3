@@ -12,16 +12,16 @@ function Contact() {
   const handleReset = () => setFormSubmitted(false)
 
   const contactInfo = [
-    { icon: <Mail size={20} />, title: "Email", description: "info@birdstack.dev" },
-    { icon: <Phone size={20} />, title: "Teléfono", description: "+1 234 567 890" },
-    { icon: <MapPin size={20} />, title: "Ubicación", description: "Monterrey, México" },
+    { id: 'email', icon: <Mail size={20} />, title: "Email", description: "info@birdstack.dev" },
+    { id: 'phone', icon: <Phone size={20} />, title: "Teléfono", description: "+1 234 567 890" },
+    { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Monterrey, México" },
   ]
 
   return (
     <div className="contact">
       <section className="contact__hero section">
         <div className="container">
-          <span className="contact__badge">Contacto</span>
+          <span className="badge">Contacto</span>
           <h1 className="contact__title">Contáctanos</h1>
           <p className="contact__subtitle">
             ¿Tienes un proyecto en mente? Escríbenos y lo hacemos realidad.
@@ -32,8 +32,8 @@ function Contact() {
       <section className="section">
         <div className="container">
           <div className="contact__info-grid">
-            {contactInfo.map((item, index) => (
-              <div key={index} className="contact__info-card">
+            {contactInfo.map((item) => (
+              <div key={item.id} className="contact__info-card">
                 <div className="contact__info-icon">{item.icon}</div>
                 <h4>{item.title}</h4>
                 <p>{item.description}</p>
@@ -59,8 +59,8 @@ function Contact() {
               </div>
             ) : (
               <>
-                <SectionTitle 
-                  title="Envíanos un mensaje" 
+                <SectionTitle
+                  title="Envíanos un mensaje"
                   subtitle="Completa el formulario y te contactaremos en 24 horas"
                 />
                 <ContactForm onSuccess={handleFormSuccess} />

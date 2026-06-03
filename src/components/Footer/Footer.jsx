@@ -42,7 +42,7 @@ function Footer() {
               <h4 className="footer__title">{section.title}</h4>
               <ul className="footer__links">
                 {section.links.map((link) => (
-                  <li key={link.label}>
+                  <li key={`${section.title}-${link.label}`}>
                     {link.href ? (
                       <a href={link.href} className="footer__link">
                         {link.icon && <span className="footer__link-icon">{link.icon}</span>}

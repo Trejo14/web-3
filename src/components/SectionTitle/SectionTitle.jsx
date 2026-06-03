@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import './SectionTitle.css'
 
 function SectionTitle({ title, subtitle, alignment = "center" }) {
@@ -7,6 +8,12 @@ function SectionTitle({ title, subtitle, alignment = "center" }) {
       {subtitle && <p className="section-title__subtitle">{subtitle}</p>}
     </div>
   )
+}
+
+SectionTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  alignment: PropTypes.oneOf(['center', 'left']),
 }
 
 export default SectionTitle

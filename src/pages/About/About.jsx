@@ -1,4 +1,4 @@
-import { Target, Eye, Heart } from 'lucide-react'
+import { Heart, Target, Eye } from 'lucide-react'
 import TeamCard from '../../components/TeamCard/TeamCard'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
@@ -7,10 +7,10 @@ import './About.css'
 
 function About() {
   const team = [
-    { name: "Daniel Trejo", role: "CEO & Fundador", socialLinks: [{ icon: "in", link: "#" }, { icon: "tw", link: "#" }] },
-    { name: "Adolfo Salinas", role: "CTO", socialLinks: [{ icon: "in", link: "#" }, { icon: "gh", link: "#" }] },
-    { name: "Angel Eliseo", role: "Lead Developer", socialLinks: [{ icon: "gh", link: "#" }, { icon: "in", link: "#" }] },
-    { name: "Jose Luis Resendiz", role: "UX Designer", socialLinks: [{ icon: "in", link: "#" }, { icon: "dr", link: "#" }] },
+    { id: 'daniel', name: "Daniel Trejo", role: "CEO & Fundador", socialLinks: [{ icon: "in", link: "#" }, { icon: "tw", link: "#" }] },
+    { id: 'adolfo', name: "Adolfo Salinas", role: "CTO", socialLinks: [{ icon: "in", link: "#" }, { icon: "gh", link: "#" }] },
+    { id: 'angel', name: "Angel Eliseo", role: "Lead Developer", socialLinks: [{ icon: "gh", link: "#" }, { icon: "in", link: "#" }] },
+    { id: 'jose', name: "Jose Luis Resendiz", role: "UX Designer", socialLinks: [{ icon: "in", link: "#" }, { icon: "dr", link: "#" }] },
   ]
 
   const values = [
@@ -24,10 +24,10 @@ function About() {
       <section className="about__hero section">
         <div className="container">
           <div className="about__hero-content">
-            <span className="about__badge">Nosotros</span>
+            <span className="badge">Nosotros</span>
             <h1 className="about__title">Sobre BirdStack</h1>
             <p className="about__description">
-              Nacimos para transformar ideas en soluciones digitales innovadoras. 
+              Nacimos para transformar ideas en soluciones digitales innovadoras.
               Nuestra misión es impulsar negocios a través de tecnología y creatividad.
             </p>
             <Button variant="primary" size="large">Únete a nuestro equipo</Button>
@@ -56,13 +56,13 @@ function About() {
 
       <section className="section section-alt">
         <div className="container">
-          <SectionTitle 
-            title="Nuestro Equipo" 
+          <SectionTitle
+            title="Nuestro Equipo"
             subtitle="Conoce a las personas detrás de BirdStack"
           />
-          <div className="about__team-grid">
-            {team.map((member, index) => (
-              <TeamCard key={index} {...member} />
+          <div className="grid-4">
+            {team.map((member) => (
+              <TeamCard key={member.id} {...member} />
             ))}
           </div>
         </div>
@@ -70,8 +70,8 @@ function About() {
 
       <section className="section">
         <div className="container">
-          <SectionTitle 
-            title="Nuestros Valores" 
+          <SectionTitle
+            title="Nuestros Valores"
             subtitle="Los principios que guían nuestro trabajo"
           />
           <Features items={values} />

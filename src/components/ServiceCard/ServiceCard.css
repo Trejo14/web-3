@@ -11,12 +11,13 @@
 .service-card:hover {
   box-shadow: var(--shadow-md);
   border-color: transparent;
+  transform: translateY(-2px);
 }
 
 .service-card__icon {
-  font-size: 40px;
   margin-bottom: 20px;
   line-height: 1;
+  color: var(--accent);
 }
 
 .service-card__title {

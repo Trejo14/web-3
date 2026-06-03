@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Zap, Shield, DollarSign, Target } from 'lucide-react'
 import './Features.css'
 
@@ -13,8 +14,8 @@ function Features({ items = [] }) {
 
   return (
     <div className="features">
-      {features.map((item, index) => (
-        <div key={index} className="features__item">
+      {features.map((item) => (
+        <div key={item.title} className="features__item">
           <div className="features__icon">{item.icon}</div>
           <h4 className="features__title">{item.title}</h4>
           <p className="features__description">{item.description}</p>
@@ -22,6 +23,14 @@ function Features({ items = [] }) {
       ))}
     </div>
   )
+}
+
+Features.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    icon: PropTypes.node,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  })),
 }
 
 export default Features

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import { ChevronRight } from 'lucide-react'
 import './Hero.css'
 
-function Hero({ 
+function Hero({
   title = "Transforma tu presencia digital",
   subtitle = "Creamos soluciones tecnológicas innovadoras que impulsan el crecimiento de tu negocio.",
   ctaText = "Contáctanos",
@@ -22,7 +23,7 @@ function Hero({
     <section className={`hero ${visible ? 'hero--visible' : ''}`}>
       <div className="hero__container container">
         <div className="hero__content">
-          <span className="hero__badge">Soluciones Digitales</span>
+          <span className="badge">Soluciones Digitales</span>
           <h1 className="hero__title">{title}</h1>
           <p className="hero__subtitle">{subtitle}</p>
           <div className="hero__cta">
@@ -39,12 +40,20 @@ function Hero({
         </div>
         {image && (
           <div className="hero__image">
-            <img src={image} alt={title} />
+            <img src={image} alt={title} loading="lazy" />
           </div>
         )}
       </div>
     </section>
   )
+}
+
+Hero.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  ctaText: PropTypes.string,
+  ctaLink: PropTypes.string,
+  image: PropTypes.string,
 }
 
 export default Hero

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Send, Loader2 } from 'lucide-react'
 import Button from '../Button/Button'
 import './ContactForm.css'
@@ -38,7 +39,7 @@ function ContactForm({ onSuccess }) {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="contact-form__row">
         <div className="contact-form__group">
           <label className="contact-form__label" htmlFor="name">Nombre completo *</label>
@@ -50,6 +51,8 @@ function ContactForm({ onSuccess }) {
             value={formData.name}
             onChange={handleChange}
             required
+            minLength={3}
+            maxLength={80}
             placeholder="Juan Pérez"
           />
         </div>
@@ -63,6 +66,7 @@ function ContactForm({ onSuccess }) {
             value={formData.email}
             onChange={handleChange}
             required
+            maxLength={120}
             placeholder="juan@ejemplo.com"
           />
         </div>
@@ -78,6 +82,7 @@ function ContactForm({ onSuccess }) {
             className="contact-form__input"
             value={formData.phone}
             onChange={handleChange}
+            maxLength={20}
             placeholder="+52 111 222 3344"
           />
         </div>
@@ -90,6 +95,7 @@ function ContactForm({ onSuccess }) {
             className="contact-form__input"
             value={formData.company}
             onChange={handleChange}
+            maxLength={100}
             placeholder="Mi Empresa S.A."
           />
         </div>
@@ -124,6 +130,8 @@ function ContactForm({ onSuccess }) {
           value={formData.message}
           onChange={handleChange}
           required
+          minLength={10}
+          maxLength={2000}
           placeholder="Cuéntanos sobre tu proyecto..."
         ></textarea>
       </div>
@@ -137,6 +145,10 @@ function ContactForm({ onSuccess }) {
       </Button>
     </form>
   )
+}
+
+ContactForm.propTypes = {
+  onSuccess: PropTypes.func,
 }
 
 export default ContactForm
