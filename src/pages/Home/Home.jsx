@@ -1,4 +1,5 @@
 import { Code2, Smartphone, Cloud } from 'lucide-react'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 import Hero from '../../components/Hero/Hero'
 import Features from '../../components/Features/Features'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
@@ -6,6 +7,7 @@ import TestimonialCard from '../../components/TestimonialCard/TestimonialCard'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 
 function Home() {
+  useDocumentTitle('')
   const services = [
     { id: 'web', icon: <Code2 size={40} />, title: "Desarrollo Web", description: "Sitios web modernos y aplicaciones con las últimas tecnologías.", features: ["React, Vue, Angular", "Rendimiento optimizado", "Responsive design"], price: "Desde $999" },
     { id: 'mobile', icon: <Smartphone size={40} />, title: "Apps Móviles", description: "Aplicaciones nativas e híbridas para iOS y Android.", features: ["iOS y Android", "UX optimizado", "Push notifications"], price: "Desde $2,499" },

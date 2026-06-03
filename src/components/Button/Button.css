@@ -11,12 +11,12 @@
 }
 
 .btn--primary {
-  background: var(--text);
+  background: var(--bg-inverse);
   color: #fff;
 }
 
 .btn--primary:hover:not(:disabled) {
-  background: #27272a;
+  opacity: 0.85;
 }
 
 .btn--secondary {

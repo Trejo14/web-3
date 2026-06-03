@@ -1,6 +1,7 @@
 :root {
   --bg: #ffffff;
   --bg-alt: #f7f7f8;
+  --bg-inverse: #0a0a0b;
   --text: #0a0a0b;
   --text-light: #71717a;
   --text-lighter: #a1a1aa;
@@ -30,12 +31,13 @@
   :root {
     --bg: #09090b;
     --bg-alt: #18181b;
+    --bg-inverse: #09090b;
     --text: #fafafa;
     --text-light: #a1a1aa;
-    --text-lighter: #71717a;
+    --text-lighter: #a1a1aa;
     --border: #27272a;
     --accent: #818cf8;
-    --accent-light: #1e1b4b;
+    --accent-light: #2e2066;
     --accent-dark: #6366f1;
     --accent-ring: rgba(129, 140, 248, 0.2);
     --success-bg: #052e16;

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Code2, Smartphone, Cloud, Palette, Shield, Briefcase } from 'lucide-react'
+import { ArrowRight, Code2, Smartphone, Cloud, Palette, Shield, Briefcase, Search, FileText, Rocket } from 'lucide-react'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
@@ -7,6 +8,7 @@ import Button from '../../components/Button/Button'
 import './Services.css'
 
 function Services() {
+  useDocumentTitle('Servicios')
   const services = [
     { id: 'web', icon: <Code2 size={40} />, title: "Desarrollo Web", description: "Creamos sitios web modernos y plataformas personalizadas.", features: ["React, Vue, Angular", "PWAs", "API development"], price: "Desde $999" },
     { id: 'mobile', icon: <Smartphone size={40} />, title: "Apps Móviles", description: "Aplicaciones nativas e híbridas para iOS y Android.", features: ["iOS & Android", "React Native, Flutter", "App Store deploy"], price: "Desde $2,499" },
@@ -17,10 +19,10 @@ function Services() {
   ]
 
   const process = [
-    { id: 'analysis', icon: <Code2 size={28} />, title: "Análisis", description: "Estudiamos tus necesidades y objetivos" },
-    { id: 'proposal', icon: <Code2 size={28} />, title: "Propuesta", description: "Presentamos una solución personalizada" },
+    { id: 'analysis', icon: <Search size={28} />, title: "Análisis", description: "Estudiamos tus necesidades y objetivos" },
+    { id: 'proposal', icon: <FileText size={28} />, title: "Propuesta", description: "Presentamos una solución personalizada" },
     { id: 'development', icon: <Code2 size={28} />, title: "Desarrollo", description: "Implementamos la solución acordada" },
-    { id: 'delivery', icon: <Code2 size={28} />, title: "Entrega", description: "Entregamos y damos soporte continuo" },
+    { id: 'delivery', icon: <Rocket size={28} />, title: "Entrega", description: "Entregamos y damos soporte continuo" },
   ]
 
   return (

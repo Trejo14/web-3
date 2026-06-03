@@ -1,5 +1,5 @@
 .footer {
-  background: var(--text);
+  background: var(--bg-inverse);
   color: #fff;
   padding: 64px 0 24px;
   margin-top: auto;

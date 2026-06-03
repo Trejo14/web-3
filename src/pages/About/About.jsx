@@ -1,4 +1,5 @@
 import { Heart, Target, Eye } from 'lucide-react'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 import TeamCard from '../../components/TeamCard/TeamCard'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
@@ -6,6 +7,7 @@ import Button from '../../components/Button/Button'
 import './About.css'
 
 function About() {
+  useDocumentTitle('Nosotros')
   const team = [
     { id: 'daniel', name: "Daniel Trejo", role: "CEO & Fundador", socialLinks: [{ icon: "in", link: "#" }, { icon: "tw", link: "#" }] },
     { id: 'adolfo', name: "Adolfo Salinas", role: "CTO", socialLinks: [{ icon: "in", link: "#" }, { icon: "gh", link: "#" }] },

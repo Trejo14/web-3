@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Loader2, AlertCircle } from 'lucide-react'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import './Projects.css'
@@ -22,6 +23,7 @@ function SkeletonCard() {
 }
 
 function Projects() {
+  useDocumentTitle('Proyectos')
   const [projects, setProjects] = useState([])
   const [favorites, setFavorites] = useState([])
   const [loading, setLoading] = useState(true)

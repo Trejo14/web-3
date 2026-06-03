@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { CheckCircle2, Mail, MapPin, Phone } from 'lucide-react'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Button from '../../components/Button/Button'
 import './Contact.css'
 
 function Contact() {
+  useDocumentTitle('Contacto')
   const [formSubmitted, setFormSubmitted] = useState(false)
 
   const handleFormSuccess = () => setFormSubmitted(true)
