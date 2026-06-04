@@ -1,0 +1,134 @@
+.carousel {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.carousel--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 20px;
+  color: var(--text-light);
+}
+
+.carousel__viewport {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__slide {
+  animation: fade-in 0.4s ease;
+  padding: 0 20px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel__icon {
+  color: var(--accent);
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+.carousel__quote {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.carousel__rating {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+
+.carousel__author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.carousel__author strong {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.carousel__role {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.carousel__btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.carousel__btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.carousel__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.carousel__dot--active {
+  background: var(--accent);
+  transform: scale(1.2);
+}
+
+.carousel__error {
+  color: #ef4444;
+  font-size: 14px;
+}
+
+.carousel__empty-text {
+  font-size: 15px;
+  color: var(--text-light);
+}
