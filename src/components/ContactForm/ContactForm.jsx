@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import emailjs from '@emailjs/browser'
 import { Send, Loader2 } from 'lucide-react'
@@ -6,7 +6,6 @@ import Button from '../Button/Button'
 import './ContactForm.css'
 
 function ContactForm({ onSuccess }) {
-  const formRef = useRef(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,11 +29,26 @@ function ContactForm({ onSuccess }) {
     setSubmitError(null)
 
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      if (!serviceID || !templateID || !publicKey) {
+        throw new Error('Faltan variables de entorno de EmailJS')
+      }
+
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service,
+          message: formData.message,
+        },
+        publicKey
       )
 
       setFormData({
@@ -49,13 +63,21 @@ function ContactForm({ onSuccess }) {
       if (onSuccess) onSuccess()
     } catch (error) {
       console.error('Error al enviar mensaje:', error)
-      setSubmitError('Ocurrió un error al enviar el mensaje. Inténtalo de nuevo más tarde.')
+      if (error?.status === 412) {
+        setSubmitError('La plantilla de EmailJS no está configurada correctamente. Revisa que las variables coincidan.')
+      } else if (error?.status === 401) {
+        setSubmitError('La clave pública de EmailJS no es válida.')
+      } else if (error?.status === 403) {
+        setSubmitError('El dominio no está autorizado en EmailJS. Agrega esta URL en emailjs.com.')
+      } else {
+        setSubmitError('Ocurrió un error al enviar el mensaje. Inténtalo de nuevo más tarde.')
+      }
       setIsSubmitting(false)
     }
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate ref={formRef}>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="contact-form__row">
         <div className="contact-form__group">
           <label className="contact-form__label" htmlFor="name">Nombre completo *</label>
