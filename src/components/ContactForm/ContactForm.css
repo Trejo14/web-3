@@ -52,6 +52,13 @@
   min-height: 120px;
 }
 
+.contact-form__error {
+  color: #ef4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   .contact-form__row {
     grid-template-columns: 1fr;

@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
+import emailjs from '@emailjs/browser'
 import { Send, Loader2 } from 'lucide-react'
 import Button from '../Button/Button'
 import './ContactForm.css'
 
 function ContactForm({ onSuccess }) {
+  const formRef = useRef(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,16 +17,26 @@ function ContactForm({ onSuccess }) {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
+    setSubmitError(null)
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+
       setFormData({
         name: '',
         email: '',
@@ -35,11 +47,15 @@ function ContactForm({ onSuccess }) {
       })
       setIsSubmitting(false)
       if (onSuccess) onSuccess()
-    }, 500)
+    } catch (error) {
+      console.error('Error al enviar mensaje:', error)
+      setSubmitError('Ocurrió un error al enviar el mensaje. Inténtalo de nuevo más tarde.')
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate ref={formRef}>
       <div className="contact-form__row">
         <div className="contact-form__group">
           <label className="contact-form__label" htmlFor="name">Nombre completo *</label>
@@ -136,6 +152,9 @@ function ContactForm({ onSuccess }) {
         ></textarea>
       </div>
 
+      {submitError && (
+        <p className="contact-form__error">{submitError}</p>
+      )}
       <Button type="submit" variant="primary" size="large" fullWidth disabled={isSubmitting}>
         {isSubmitting ? (
           <>Enviando... <Loader2 size={18} className="spin" /></>
