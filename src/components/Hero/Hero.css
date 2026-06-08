@@ -24,7 +24,7 @@
 }
 
 .hero__title {
-  font-size: 56px;
+  font-size: 60px;
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -33,7 +33,7 @@
 }
 
 .hero__subtitle {
-  font-size: 18px;
+  font-size: 20px;
   color: var(--text-light);
   line-height: 1.7;
   margin-bottom: 40px;
@@ -84,7 +84,7 @@
   }
 
   .hero__title {
-    font-size: 40px;
+    font-size: 44px;
   }
 
   .hero__image {
@@ -94,7 +94,7 @@
 
 @media (max-width: 600px) {
   .hero__title {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .hero__cta {

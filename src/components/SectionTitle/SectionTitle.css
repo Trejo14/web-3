@@ -11,7 +11,7 @@
 }
 
 .section-title__title {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -19,7 +19,7 @@
 }
 
 .section-title__subtitle {
-  font-size: 17px;
+  font-size: 18px;
   color: var(--text-light);
   max-width: 560px;
   line-height: 1.7;
@@ -31,6 +31,6 @@
 
 @media (max-width: 600px) {
   .section-title__title {
-    font-size: 28px;
+    font-size: 32px;
   }
 }

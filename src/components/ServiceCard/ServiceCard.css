@@ -21,7 +21,7 @@
 }
 
 .service-card__title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.01em;
   margin-bottom: 12px;
@@ -30,7 +30,7 @@
 
 .service-card__description {
   color: var(--text-light);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.7;
   margin-bottom: 20px;
   flex: 1;
@@ -47,7 +47,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-light);
 }
 
@@ -57,7 +57,7 @@
 }
 
 .service-card__price {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--text);
   padding-top: 20px;

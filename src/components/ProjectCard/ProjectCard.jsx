@@ -6,7 +6,11 @@ function ProjectCard({ title, image, description, tags = [], link = "#", isFavor
   return (
     <div className="project-card">
       <div className="project-card__image">
-        {image ? <img src={image} alt={title} loading="lazy" /> : <div className="project-card__placeholder">📁</div>}
+        {image ? <img src={image} alt={title} loading="lazy" /> : (
+          <div className="project-card__placeholder" data-initial={title.charAt(0).toUpperCase()}>
+            <span>{title.charAt(0).toUpperCase()}</span>
+          </div>
+        )}
         {onToggleFavorite && (
           <button
             className={`project-card__favorite ${isFavorite ? 'active' : ''}`}

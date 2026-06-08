@@ -29,6 +29,10 @@ function Projects() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  const projectImages = {
+    "birdstack": null,
+  }
+
   useEffect(() => {
     const fetchRepos = async () => {
       try {
@@ -46,7 +50,8 @@ function Projects() {
           description: repo.description || 'Sin descripción disponible.',
           tags: [repo.language || 'N/A'],
           link: repo.html_url,
-          stars: repo.stargazers_count
+          stars: repo.stargazers_count,
+          image: projectImages[repo.name] || null
         }))
 
         setProjects(mapped)

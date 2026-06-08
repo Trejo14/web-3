@@ -19,10 +19,10 @@ function Services() {
   ]
 
   const process = [
-    { id: 'analysis', icon: <Search size={28} />, title: "Análisis", description: "Estudiamos tus necesidades y objetivos" },
-    { id: 'proposal', icon: <FileText size={28} />, title: "Propuesta", description: "Presentamos una solución personalizada" },
-    { id: 'development', icon: <Code2 size={28} />, title: "Desarrollo", description: "Implementamos la solución acordada" },
-    { id: 'delivery', icon: <Rocket size={28} />, title: "Entrega", description: "Entregamos y damos soporte continuo" },
+    { id: 'analysis', icon: <Search size={28} />, title: "Análisis", description: "Investigamos tu negocio a fondo, identificamos oportunidades clave y definimos los requisitos técnicos junto a ti para asegurar una visión clara del proyecto." },
+    { id: 'proposal', icon: <FileText size={28} />, title: "Propuesta", description: "Diseñamos una solución personalizada con alcance definido, timeline realista, tecnologías adecuadas y un presupuesto transparente." },
+    { id: 'development', icon: <Code2 size={28} />, title: "Desarrollo", description: "Ejecutamos el plan mediante sprints ágiles con revisiones periódicas, comunicación constante y pruebas de calidad para garantizar un resultado impecable." },
+    { id: 'delivery', icon: <Rocket size={28} />, title: "Entrega", description: "Desplegamos tu proyecto en producción, capacitamos a tu equipo y ofrecemos soporte continuo post-lanzamiento para asegurar su éxito." },
   ]
 
   return (
