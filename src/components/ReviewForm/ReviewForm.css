@@ -3,6 +3,12 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.review-form:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .review-form__row {
@@ -38,6 +44,11 @@
 .review-form__input::placeholder,
 .review-form__textarea::placeholder {
   color: var(--text-lighter);
+}
+
+.review-form__input:hover,
+.review-form__textarea:hover {
+  border-color: var(--text-lighter);
 }
 
 .review-form__input:focus,

@@ -18,6 +18,16 @@
   margin-bottom: 16px;
 }
 
+.section-title--center .section-title__title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
 .section-title__subtitle {
   font-size: 18px;
   color: var(--text-light);

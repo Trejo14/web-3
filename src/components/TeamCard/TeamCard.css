@@ -8,9 +8,9 @@
 }
 
 .team-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: transparent;
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--accent-ring);
+  transform: translateY(-4px);
 }
 
 .team-card__photo {
@@ -19,6 +19,12 @@
   margin: 0 auto 20px;
   border-radius: 50%;
   overflow: hidden;
+  box-shadow: 0 0 0 3px var(--accent-light);
+  transition: var(--transition);
+}
+
+.team-card:hover .team-card__photo {
+  box-shadow: 0 0 0 3px var(--accent);
 }
 
 .team-card__photo img {

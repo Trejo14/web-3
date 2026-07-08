@@ -23,7 +23,16 @@
 
 .carousel__slide {
   animation: fade-in 0.4s ease;
-  padding: 0 20px;
+  padding: 40px 32px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.carousel__slide:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-ring);
 }
 
 @keyframes fade-in {
@@ -39,7 +48,7 @@
 
 .carousel__icon {
   color: var(--accent);
-  opacity: 0.5;
+  opacity: 0.3;
   margin-bottom: 16px;
 }
 

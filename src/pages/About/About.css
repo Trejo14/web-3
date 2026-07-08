@@ -1,10 +1,20 @@
 .about__hero {
-  background: var(--bg-alt);
+  background: linear-gradient(180deg, var(--accent-light) 0%, var(--bg) 100%);
   padding: 120px 0;
+  position: relative;
+}
+
+.about__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, var(--accent-ring) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .about__hero-content {
   max-width: 640px;
+  position: relative;
 }
 
 .about__title {
@@ -30,9 +40,16 @@
 
 .about__mission-item {
   padding: 32px;
-  background: var(--bg-alt);
+  background: var(--bg);
   border-radius: var(--radius);
   border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.about__mission-item:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-ring);
+  transform: translateY(-4px);
 }
 
 .about__mission-item h3 {

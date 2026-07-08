@@ -16,7 +16,9 @@
 }
 
 .btn--primary:hover:not(:disabled) {
-  opacity: 0.85;
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn--secondary {
@@ -35,8 +37,9 @@
 }
 
 .btn--outline:hover:not(:disabled) {
-  border-color: var(--text);
-  background: var(--bg-alt);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
 }
 
 .btn--ghost {

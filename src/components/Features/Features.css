@@ -7,18 +7,30 @@
 .features__item {
   text-align: center;
   padding: 32px 16px;
+  transition: var(--transition);
+}
+
+.features__item:hover {
+  transform: translateY(-4px);
 }
 
 .features__icon {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-alt);
-  border-radius: var(--radius);
-  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--accent-light), transparent);
+  border-radius: 16px;
+  margin: 0 auto 20px;
   color: var(--accent);
+  transition: var(--transition);
+  box-shadow: 0 4px 12px var(--accent-ring);
+}
+
+.features__item:hover .features__icon {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px var(--accent-ring);
 }
 
 .features__title {

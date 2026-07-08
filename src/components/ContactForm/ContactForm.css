@@ -3,6 +3,12 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 40px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.contact-form:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .contact-form__row {
@@ -38,6 +44,11 @@
 .contact-form__input::placeholder,
 .contact-form__textarea::placeholder {
   color: var(--text-lighter);
+}
+
+.contact-form__input:hover,
+.contact-form__textarea:hover {
+  border-color: var(--text-lighter);
 }
 
 .contact-form__input:focus,

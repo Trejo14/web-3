@@ -7,8 +7,9 @@
 }
 
 .project-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: transparent;
+  box-shadow: var(--shadow-xl);
+  border-color: var(--accent-ring);
+  transform: translateY(-4px);
 }
 
 .project-card__image {
@@ -35,10 +36,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent-light), var(--accent));
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-ring) 50%, var(--accent) 100%);
   font-size: 64px;
   font-weight: 700;
-  color: var(--accent);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .project-card__placeholder span {
