@@ -104,7 +104,7 @@ function Hero({
     }
 
     const color = hexToRgb(getAccentColor())
-    const particleCount = Math.min(120, Math.floor((canvas.width * canvas.height) / 6000))
+    const particleCount = Math.min(300, Math.floor((canvas.width * canvas.height) / 2500))
 
     const init = () => {
       particles = []
