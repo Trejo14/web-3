@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { CheckCircle } from 'lucide-react'
+import Button from '../Button/Button'
 import './ServiceCard.css'
 
-function ServiceCard({ icon, title, description, price, features = [] }) {
+function ServiceCard({ icon, title, description, actionText, features = [] }) {
   return (
     <div className="service-card">
       <div className="service-card__icon">{icon}</div>
@@ -18,7 +19,11 @@ function ServiceCard({ icon, title, description, price, features = [] }) {
           ))}
         </ul>
       )}
-      {price && <p className="service-card__price">{price}</p>}
+      {actionText && (
+        <div className="service-card__action">
+          <Button variant="primary" fullWidth>{actionText}</Button>
+        </div>
+      )}
     </div>
   )
 }
@@ -27,7 +32,7 @@ ServiceCard.propTypes = {
   icon: PropTypes.node,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  price: PropTypes.string,
+  actionText: PropTypes.string,
   features: PropTypes.arrayOf(PropTypes.string),
 }
 

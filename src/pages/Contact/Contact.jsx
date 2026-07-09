@@ -14,9 +14,9 @@ function Contact() {
   const handleReset = () => setFormSubmitted(false)
 
   const contactInfo = [
-    { id: 'email', icon: <Mail size={20} />, title: "Email", description: "info@birdstack.dev" },
-    { id: 'phone', icon: <Phone size={20} />, title: "Teléfono", description: "+1 234 567 890" },
-    { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Monterrey, México" },
+    { id: 'email', icon: <Mail size={20} />, title: "Email", description: "birdstackmx@gmail.com" },
+    { id: 'phone', icon: <Phone size={20} />, title: "Teléfono", description: "+52 2228402052" },
+    { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Puebla, México" },
   ]
 
   return (

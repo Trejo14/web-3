@@ -82,11 +82,9 @@
   flex-shrink: 0;
 }
 
-.service-card__price {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text);
+.service-card__action {
   padding-top: 20px;
   border-top: 1px solid var(--border);
   position: relative;
+  margin-top: auto;
 }
