@@ -15,7 +15,7 @@ function Contact() {
 
   const contactInfo = [
     { id: 'email', icon: <Mail size={20} />, title: "Email", description: "birdstackmx@gmail.com" },
-    { id: 'phone', icon: <Phone size={20} />, title: "Teléfono", description: "+52 2228402052" },
+    { id: 'phone', icon: <Phone size={20} />, title: "Teléfono", description: "+52 2228410082" },
     { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Puebla, México" },
   ]
 
