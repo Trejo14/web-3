@@ -54,7 +54,7 @@ function Services() {
       <section className="section section-alt">
         <div className="container">
           <SectionTitle
-            title="Nuestro Proceso"
+            title="Nuestro Proceso de trabajo"
             subtitle="Así trabajamos en cada proyecto"
           />
           <Features items={process} />
