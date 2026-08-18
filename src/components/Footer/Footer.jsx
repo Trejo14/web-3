@@ -20,7 +20,7 @@ function Footer() {
     {
       title: 'Contacto',
       links: [
-        { label: 'birdstackmx@gmail.com', icon: <Mail size={14} />, href: 'birdstackmx@gmail.com' },
+        { label: 'birdstackmx@gmail.com', icon: <Mail size={14} />, href: 'mailto:birdstackmx@gmail.com' },
         { label: 'Puebla, México', icon: <MapPin size={14} />, href: null },
       ],
     },
