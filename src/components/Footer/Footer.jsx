@@ -20,8 +20,8 @@ function Footer() {
     {
       title: 'Contacto',
       links: [
-        { label: 'info@birdstack.dev', icon: <Mail size={14} />, href: 'mailto:info@birdstack.dev' },
-        { label: 'Monterrey, México', icon: <MapPin size={14} />, href: null },
+        { label: 'birdstackmx@gmail.com', icon: <Mail size={14} />, href: 'birdstackmx@gmail.com' },
+        { label: 'Puebla, México', icon: <MapPin size={14} />, href: null },
       ],
     },
   ]
