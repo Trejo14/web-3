@@ -1,8 +1,11 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Loader2, AlertCircle } from 'lucide-react'
+import { useState, useMemo } from 'react'
+import { AlertCircle, ArrowRight } from 'lucide-react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
+import useGithubRepos from '../../hooks/useGithubRepos'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
+import Button from '../../components/Button/Button'
+import { GithubIcon } from '../../components/Icons/BrandIcons'
 import './Projects.css'
 
 function SkeletonCard() {
@@ -24,63 +27,24 @@ function SkeletonCard() {
 
 function Projects() {
   useDocumentTitle('Proyectos')
-  const [projects, setProjects] = useState([])
-  const [favorites, setFavorites] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const { projects, loading, error, githubUrl } = useGithubRepos()
+  const [filter, setFilter] = useState('Todos')
 
-  const projectImages = {
-    "birdstack": null,
-  }
+  const languages = useMemo(() => {
+    const unique = [...new Set(projects.map(p => p.language).filter(Boolean))]
+    return ['Todos', ...unique]
+  }, [projects])
 
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const response = await fetch('https://api.github.com/users/Trejo14/repos')
-
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        const mapped = data.map(repo => ({
-          id: repo.id,
-          title: repo.name,
-          description: repo.description || 'Sin descripción disponible.',
-          tags: [repo.language || 'N/A'],
-          link: repo.html_url,
-          stars: repo.stargazers_count,
-          image: projectImages[repo.name] || null
-        }))
-
-        setProjects(mapped)
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchRepos()
-  }, [])
-
-  const toggleFavorite = useCallback((id) => {
-    setFavorites(prev =>
-      prev.includes(id)
-        ? prev.filter(i => i !== id)
-        : [...prev, id]
-    )
-  }, [])
+  const visible = filter === 'Todos' ? projects : projects.filter(p => p.language === filter)
 
   return (
     <div className="projects">
       <section className="projects__hero section">
         <div className="container">
           <span className="badge">Portafolio</span>
-          <h1 className="projects__title">Nuestros Proyectos</h1>
+          <h1 className="projects__title">Nuestro trabajo</h1>
           <p className="projects__subtitle">
-            Explora los proyectos que hemos realizado y nuestras contribuciones open source.
+            Proyectos que hemos diseñado y programado, con su código disponible para que veas cómo trabajamos.
           </p>
         </div>
       </section>
@@ -89,36 +53,63 @@ function Projects() {
         <div className="container">
           <SectionTitle
             title="Proyectos recientes"
-            subtitle="Proyectos destacando nuestro expertise técnico"
+            subtitle="Código real, disponible públicamente en GitHub"
           />
+          {!loading && !error && projects.length >= 6 && languages.length > 2 && (
+            <div className="projects__filters" role="group" aria-label="Filtrar por tecnología">
+              {languages.map(lang => (
+                <button
+                  key={lang}
+                  type="button"
+                  className={`projects__filter ${filter === lang ? 'projects__filter--active' : ''}`}
+                  onClick={() => setFilter(lang)}
+                  aria-pressed={filter === lang}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+          )}
           {loading && (
             <div className="grid-3" aria-busy="true">
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
+              {Array.from({ length: 6 }, (_, i) => <SkeletonCard key={i} />)}
             </div>
           )}
           {error && (
             <div className="projects__status projects__status--error">
               <AlertCircle size={24} />
-              <p>Error: {error}</p>
+              <p>No se pudieron cargar los proyectos en este momento.</p>
+              <Button href={githubUrl} variant="outline">
+                <GithubIcon size={16} /> Ver en GitHub
+              </Button>
             </div>
           )}
           {!loading && !error && (
-            <div className="grid-3">
-              {projects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  {...project}
-                  isFavorite={favorites.includes(project.id)}
-                  onToggleFavorite={() => toggleFavorite(project.id)}
-                />
+            <div className="grid-projects">
+              {visible.map((project) => (
+                <ProjectCard key={project.id} {...project} />
               ))}
             </div>
           )}
+          {!loading && !error && (
+            <div className="projects__more">
+              <Button href={githubUrl} variant="outline">
+                <GithubIcon size={16} /> Ver todo en GitHub
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-section__content">
+            <h2>¿Quieres un proyecto como estos?</h2>
+            <p>Cuéntanos tu idea y te enviamos una propuesta sin compromiso.</p>
+            <Button to="/contact" variant="primary" size="large">
+              Cotizar proyecto <ArrowRight size={18} />
+            </Button>
+          </div>
         </div>
       </section>
     </div>

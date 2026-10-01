@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, MessageCircle } from 'lucide-react'
+import { GithubIcon } from '../Icons/BrandIcons'
 import Logo from '../Logo/Logo'
 import './Footer.css'
 
@@ -21,6 +22,8 @@ function Footer() {
       title: 'Contacto',
       links: [
         { label: 'birdstackmx@gmail.com', icon: <Mail size={14} />, href: 'mailto:birdstackmx@gmail.com' },
+        { label: 'WhatsApp', icon: <MessageCircle size={14} />, href: 'https://wa.me/522228410082' },
+        { label: 'GitHub', icon: <GithubIcon size={14} />, href: 'https://github.com/Trejo14' },
         { label: 'Puebla, México', icon: <MapPin size={14} />, href: null },
       ],
     },
@@ -44,7 +47,11 @@ function Footer() {
                 {section.links.map((link) => (
                   <li key={`${section.title}-${link.label}`}>
                     {link.href ? (
-                      <a href={link.href} className="footer__link">
+                      <a
+                        href={link.href}
+                        className="footer__link"
+                        {...(link.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
+                      >
                         {link.icon && <span className="footer__link-icon">{link.icon}</span>}
                         {link.label}
                       </a>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckCircle2, Mail, MapPin, Phone } from 'lucide-react'
+import { CheckCircle2, Mail, MapPin, MessageCircle } from 'lucide-react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
@@ -14,9 +14,9 @@ function Contact() {
   const handleReset = () => setFormSubmitted(false)
 
   const contactInfo = [
-    { id: 'email', icon: <Mail size={20} />, title: "Email", description: "birdstackmx@gmail.com" },
-    { id: 'phone', icon: <Phone size={20} />, title: "Teléfono", description: "+52 2228410082" },
-    { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Puebla, México" },
+    { id: 'email', icon: <Mail size={20} />, title: "Email", description: "birdstackmx@gmail.com", href: "mailto:birdstackmx@gmail.com" },
+    { id: 'whatsapp', icon: <MessageCircle size={20} />, title: "WhatsApp", description: "+52 222 841 0082", href: "https://wa.me/522228410082" },
+    { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Puebla, México · Remoto" },
   ]
 
   return (
@@ -34,13 +34,27 @@ function Contact() {
       <section className="section">
         <div className="container">
           <div className="contact__info-grid">
-            {contactInfo.map((item) => (
-              <div key={item.id} className="contact__info-card">
-                <div className="contact__info-icon">{item.icon}</div>
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-              </div>
-            ))}
+            {contactInfo.map((item) => {
+              const content = (
+                <>
+                  <div className="contact__info-icon">{item.icon}</div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </>
+              )
+              return item.href ? (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="contact__info-card contact__info-card--link"
+                  {...(item.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={item.id} className="contact__info-card">{content}</div>
+              )
+            })}
           </div>
         </div>
       </section>

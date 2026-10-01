@@ -5,6 +5,7 @@ import About from '../pages/About/About'
 import Services from '../pages/Services/Services'
 import Projects from '../pages/Projects/Projects'
 import Contact from '../pages/Contact/Contact'
+import NotFound from '../pages/NotFound/NotFound'
 
 function AppRouter() {
   return (
@@ -15,6 +16,7 @@ function AppRouter() {
         <Route path="services" element={<Services />} />
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

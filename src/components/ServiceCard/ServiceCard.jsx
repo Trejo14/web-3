@@ -3,7 +3,7 @@ import { CheckCircle } from 'lucide-react'
 import Button from '../Button/Button'
 import './ServiceCard.css'
 
-function ServiceCard({ icon, title, description, actionText, features = [] }) {
+function ServiceCard({ id, icon, title, description, actionText, features = [] }) {
   return (
     <div className="service-card">
       <div className="service-card__icon">{icon}</div>
@@ -21,7 +21,7 @@ function ServiceCard({ icon, title, description, actionText, features = [] }) {
       )}
       {actionText && (
         <div className="service-card__action">
-          <Button variant="primary" fullWidth>{actionText}</Button>
+          <Button to={id ? `/contact?servicio=${id}` : '/contact'} variant="primary" fullWidth>{actionText}</Button>
         </div>
       )}
     </div>
@@ -29,6 +29,7 @@ function ServiceCard({ icon, title, description, actionText, features = [] }) {
 }
 
 ServiceCard.propTypes = {
+  id: PropTypes.string,
   icon: PropTypes.node,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

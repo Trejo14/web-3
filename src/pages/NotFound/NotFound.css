@@ -1,0 +1,28 @@
+.not-found {
+  text-align: center;
+  padding: 160px 0;
+}
+
+.not-found__code {
+  display: block;
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+
+.not-found__title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.not-found__text {
+  color: var(--text-light);
+  margin-bottom: 32px;
+}

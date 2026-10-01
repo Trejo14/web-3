@@ -23,10 +23,10 @@ function About() {
             <span className="badge">Nosotros</span>
             <h1 className="about__title">Sobre BirdStack</h1>
             <p className="about__description">
-              Nacimos para transformar ideas en soluciones digitales innovadoras.
-              Nuestra misión es impulsar negocios a través de tecnología y creatividad.
+              Somos un equipo de desarrolladores de Puebla, México. Trabajamos directo con
+              cada cliente, sin intermediarios: hablas con las mismas personas que programan tu proyecto.
             </p>
-            <Button variant="primary" size="large">Contáctanos</Button>
+            <Button to="/contact" variant="primary" size="large">Contáctanos</Button>
           </div>
         </div>
       </section>
@@ -46,15 +46,15 @@ function About() {
           <div className="about__mission-grid">
             <div className="about__mission-item">
               <h3>Misión</h3>
-              <p>Transformar negocios a través de soluciones tecnológicas innovadoras que impulsen el crecimiento y el éxito digital.</p>
+              <p>Ayudar a negocios y emprendedores a digitalizarse con software confiable, a un precio justo y con trato directo.</p>
             </div>
             <div className="about__mission-item">
               <h3>Visión</h3>
-              <p>Ser la empresa líder en soluciones digitales, reconocida por la calidad y excelencia en cada proyecto.</p>
+              <p>Ser el equipo de desarrollo de confianza para las pequeñas y medianas empresas de México.</p>
             </div>
             <div className="about__mission-item">
-              <h3>Valores</h3>
-              <p>Innovación, calidad, compromiso y enfoque en el cliente son nuestros pilares fundamentales.</p>
+              <h3>Cómo trabajamos</h3>
+              <p>Comunicación directa, avances visibles durante todo el proyecto y soporte después de la entrega.</p>
             </div>
           </div>
         </div>

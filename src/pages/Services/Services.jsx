@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { ArrowRight, Code2, Smartphone, Cloud, Palette, Shield, Briefcase, Search, FileText, Rocket } from 'lucide-react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
@@ -10,12 +9,12 @@ import './Services.css'
 function Services() {
   useDocumentTitle('Servicios')
   const services = [
-    { id: 'web', icon: <Code2 size={40} />, title: "Desarrollo Web", description: "Creamos sitios web modernos y plataformas personalizadas.", features: ["React, Vue, Angular", "PWAs", "API development"], price: "Desde $999" },
-    { id: 'mobile', icon: <Smartphone size={40} />, title: "Apps Móviles", description: "Aplicaciones nativas e híbridas para iOS y Android.", features: ["iOS & Android", "React Native, Flutter", "App Store deploy"], price: "Desde $2,499" },
-    { id: 'cloud', icon: <Cloud size={40} />, title: "Cloud", description: "Infraestructura en la nube, migraciones y optimización.", features: ["Arquitectura cloud", "Migraciones", "DevOps"], price: "Desde $399" },
-    { id: 'design', icon: <Palette size={40} />, title: "UI/UX Design", description: "Diseño de interfaces, prototipos, testing y design systems.", features: ["Wireframes", "Prototipos", "Design systems"], price: "Desde $699" },
-    { id: 'security', icon: <Shield size={40} />, title: "Ciberseguridad", description: "Auditorías de seguridad, pruebas de penetración.", features: ["Auditorías", "Pen testing", "Cumplimiento"], price: "Desde $899" },
-    { id: 'consulting', icon: <Briefcase size={40} />, title: "Consultoría", description: "Asesoría tecnológica, arquitectura y estrategia digital.", features: ["Arquitectura", "Code review", "Estrategia"], price: "Desde $299" },
+    { id: 'web', icon: <Code2 size={40} />, title: "Desarrollo Web", description: "Creamos sitios web modernos y plataformas personalizadas.", features: ["React, Vue, Angular", "PWAs", "API development"], actionText: "Cotizar" },
+    { id: 'mobile', icon: <Smartphone size={40} />, title: "Apps Móviles", description: "Aplicaciones nativas e híbridas para iOS y Android.", features: ["iOS & Android", "React Native, Flutter", "App Store deploy"], actionText: "Cotizar" },
+    { id: 'cloud', icon: <Cloud size={40} />, title: "Cloud", description: "Infraestructura en la nube, migraciones y optimización.", features: ["Arquitectura cloud", "Migraciones", "DevOps"], actionText: "Cotizar" },
+    { id: 'design', icon: <Palette size={40} />, title: "UI/UX Design", description: "Diseño de interfaces, prototipos, testing y design systems.", features: ["Wireframes", "Prototipos", "Design systems"], actionText: "Cotizar" },
+    { id: 'security', icon: <Shield size={40} />, title: "Ciberseguridad", description: "Auditorías de seguridad, pruebas de penetración.", features: ["Auditorías", "Pen testing", "Cumplimiento"], actionText: "Cotizar" },
+    { id: 'consulting', icon: <Briefcase size={40} />, title: "Consultoría", description: "Asesoría tecnológica, arquitectura y estrategia digital.", features: ["Arquitectura", "Code review", "Estrategia"], actionText: "Cotizar" },
   ]
 
   const process = [
@@ -32,7 +31,7 @@ function Services() {
           <span className="badge">Servicios</span>
           <h1 className="services__title">Nuestros Servicios</h1>
           <p className="services__subtitle">
-            Ofrecemos soluciones tecnológicas completas adaptadas a las necesidades de tu negocio.
+            Cada proyecto empieza entendiendo tu negocio. Elige un servicio y cuéntanos qué necesitas: la primera consulta es gratuita.
           </p>
         </div>
       </section>
@@ -61,16 +60,14 @@ function Services() {
         </div>
       </section>
 
-      <section className="services__cta">
+      <section className="cta-section">
         <div className="container">
-          <div className="services__cta-content">
+          <div className="cta-section__content">
             <h2>¿Listo para empezar tu proyecto?</h2>
             <p>Contáctanos hoy y recibe una consulta gratuita</p>
-            <Link to="/contact">
-              <Button variant="primary" size="large">
-                Contáctanos <ArrowRight size={18} />
-              </Button>
-            </Link>
+            <Button to="/contact" variant="primary" size="large">
+              Contáctanos <ArrowRight size={18} />
+            </Button>
           </div>
         </div>
       </section>

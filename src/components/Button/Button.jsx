@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import './Button.css'
 
 function Button({
@@ -9,15 +10,41 @@ function Button({
   onClick,
   disabled = false,
   className = '',
-  fullWidth = false
+  fullWidth = false,
+  to,
+  href,
 }) {
+  const classes = `btn btn--${variant} btn--${size} ${fullWidth ? 'btn--full' : ''} ${className}`
+
+  if (to) {
+    return (
+      <Link to={to} onClick={onClick} className={classes}>
+        {children}
+      </Link>
+    )
+  }
+
+  if (href) {
+    const external = /^https?:/.test(href)
+    return (
+      <a
+        href={href}
+        onClick={onClick}
+        className={classes}
+        {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
+      >
+        {children}
+      </a>
+    )
+  }
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
       aria-disabled={disabled || undefined}
-      className={`btn btn--${variant} btn--${size} ${fullWidth ? 'btn--full' : ''} ${className}`}
+      className={classes}
     >
       {children}
     </button>
@@ -33,6 +60,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   fullWidth: PropTypes.bool,
+  to: PropTypes.string,
+  href: PropTypes.string,
 }
 
 export default Button

@@ -2,3 +2,9 @@
   max-width: 650px;
   margin: 0 auto;
 }
+
+.home__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}

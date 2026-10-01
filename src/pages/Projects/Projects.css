@@ -105,3 +105,40 @@
     font-size: 40px;
   }
 }
+
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.projects__filter {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.projects__filter:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.projects__filter--active,
+.projects__filter--active:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}

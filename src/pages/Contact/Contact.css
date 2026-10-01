@@ -44,6 +44,21 @@
   border-radius: var(--radius);
 }
 
+.contact__info-card--link {
+  display: block;
+  transition: var(--transition);
+}
+
+.contact__info-card--link:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.contact__info-card--link:hover p {
+  color: var(--accent);
+}
+
 .contact__info-icon {
   width: 48px;
   height: 48px;

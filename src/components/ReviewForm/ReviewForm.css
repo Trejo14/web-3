@@ -103,3 +103,17 @@
     padding: 20px;
   }
 }
+
+.review-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  color: var(--success);
+}
+
+.review-form__success p {
+  color: var(--text);
+  font-size: 17px;
+}

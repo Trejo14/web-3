@@ -1,26 +1,21 @@
 import PropTypes from 'prop-types'
 import { Star, ExternalLink } from 'lucide-react'
+import { GithubIcon } from '../Icons/BrandIcons'
 import './ProjectCard.css'
 
-function ProjectCard({ title, image, description, tags = [], link = "#", isFavorite = false, onToggleFavorite, stars }) {
+function ProjectCard({ title, image, description, tags = [], link = "#", demo, stars }) {
   return (
-    <div className="project-card">
+    <article className="project-card">
       <div className="project-card__image">
-        {image ? <img src={image} alt={title} loading="lazy" /> : (
-          <div className="project-card__placeholder" data-initial={title.charAt(0).toUpperCase()}>
+        {image ? <img src={image} alt={`Captura de ${title}`} loading="lazy" /> : (
+          <div className="project-card__placeholder" aria-hidden="true">
             <span>{title.charAt(0).toUpperCase()}</span>
           </div>
         )}
-        {onToggleFavorite && (
-          <button
-            className={`project-card__favorite ${isFavorite ? 'active' : ''}`}
-            onClick={onToggleFavorite}
-            type="button"
-            aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-            aria-pressed={isFavorite}
-          >
-            <Star size={18} fill={isFavorite ? 'currentColor' : 'none'} />
-          </button>
+        {stars > 0 && (
+          <span className="project-card__stars" aria-label={`${stars} estrellas en GitHub`}>
+            <Star size={14} fill="currentColor" /> {stars}
+          </span>
         )}
       </div>
       <div className="project-card__content">
@@ -32,17 +27,17 @@ function ProjectCard({ title, image, description, tags = [], link = "#", isFavor
           ))}
         </div>
         <div className="project-card__footer">
-          {stars !== undefined && (
-            <span className="project-card__stars">
-              <Star size={14} /> {stars}
-            </span>
-          )}
-          <a href={link} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver proyecto ${title} en GitHub`}>
-            Ver proyecto <ExternalLink size={14} />
+          <a href={link} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver código de ${title} en GitHub`}>
+            <GithubIcon size={14} /> Código
           </a>
+          {demo && (
+            <a href={demo} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver demo de ${title}`}>
+              Ver demo <ExternalLink size={14} />
+            </a>
+          )}
         </div>
       </div>
-    </div>
+    </article>
   )
 }
 
@@ -52,8 +47,7 @@ ProjectCard.propTypes = {
   description: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   link: PropTypes.string,
-  isFavorite: PropTypes.bool,
-  onToggleFavorite: PropTypes.func,
+  demo: PropTypes.string,
   stars: PropTypes.number,
 }
 

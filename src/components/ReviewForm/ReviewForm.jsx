@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Star, Send, Loader2 } from 'lucide-react'
+import { Star, Send, Loader2, CheckCircle2 } from 'lucide-react'
 import Button from '../Button/Button'
 import './ReviewForm.css'
 
@@ -14,6 +14,7 @@ function ReviewForm({ onReviewAdded }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(null)
   const [hoveredStar, setHoveredStar] = useState(0)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -42,12 +43,23 @@ function ReviewForm({ onReviewAdded }) {
       }
 
       setFormData({ author: '', email: '', role: '', message: '', rating: 0 })
+      setSubmitted(true)
       if (onReviewAdded) onReviewAdded()
     } catch (err) {
       setSubmitError(err.message)
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  if (submitted) {
+    return (
+      <div className="review-form review-form__success" role="status">
+        <CheckCircle2 size={36} />
+        <p>¡Gracias por tu opinión! Se publicará después de ser revisada.</p>
+        <Button variant="outline" onClick={() => setSubmitted(false)}>Escribir otra</Button>
+      </div>
+    )
   }
 
   return (

@@ -51,9 +51,7 @@ function Navbar() {
           </ul>
 
           <div className="navbar__cta">
-            <Link to="/contact" onClick={closeMenu}>
-              <Button variant="primary" size="small">Cotizar</Button>
-            </Link>
+            <Button to="/contact" onClick={closeMenu} variant="primary" size="small">Cotizar</Button>
           </div>
         </div>
       </div>

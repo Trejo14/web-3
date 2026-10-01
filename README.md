@@ -119,6 +119,18 @@ El proyecto está configurado para desplegarse fácilmente en [Railway](https://
 
 ---
 
+## 🛡️ Moderación de Reseñas
+
+Las reseñas nuevas quedan pendientes hasta aprobarlas. Las rutas de moderación requieren la variable de entorno `ADMIN_TOKEN` (configúrala también en Railway):
+
+```bash
+# Aprobar la reseña 5
+curl -X PUT https://TU-DOMINIO/api/reviews/5/approve -H "Authorization: Bearer $ADMIN_TOKEN"
+
+# Eliminar la reseña 5
+curl -X DELETE https://TU-DOMINIO/api/reviews/5 -H "Authorization: Bearer $ADMIN_TOKEN"
+```
+
 ## 👥 Autores
 
 Este proyecto fue desarrollado por:

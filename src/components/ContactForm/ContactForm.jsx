@@ -1,17 +1,30 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import emailjs from '@emailjs/browser'
 import { Send, Loader2 } from 'lucide-react'
 import Button from '../Button/Button'
 import './ContactForm.css'
 
+const SERVICES = [
+  { value: 'web', label: 'Desarrollo Web' },
+  { value: 'mobile', label: 'Apps Móviles' },
+  { value: 'cloud', label: 'Cloud' },
+  { value: 'design', label: 'UI/UX Design' },
+  { value: 'security', label: 'Ciberseguridad' },
+  { value: 'consulting', label: 'Consultoría' },
+  { value: 'other', label: 'Otro' },
+]
+
 function ContactForm({ onSuccess }) {
+  const [searchParams] = useSearchParams()
+  const initialService = searchParams.get('servicio')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
-    service: '',
+    service: SERVICES.some(s => s.value === initialService) ? initialService : '',
     message: ''
   })
 
@@ -45,7 +58,7 @@ function ContactForm({ onSuccess }) {
           email: formData.email,
           phone: formData.phone,
           company: formData.company,
-          service: formData.service,
+          service: SERVICES.find(s => s.value === formData.service)?.label || '',
           message: formData.message,
         },
         publicKey
@@ -149,12 +162,9 @@ function ContactForm({ onSuccess }) {
           onChange={handleChange}
         >
           <option value="">Selecciona un servicio</option>
-          <option value="web">Desarrollo Web</option>
-          <option value="mobile">Apps Móviles</option>
-          <option value="cloud">Cloud</option>
-          <option value="ux">UI/UX Design</option>
-          <option value="consulting">Consultoría</option>
-          <option value="other">Otro</option>
+          {SERVICES.map(s => (
+            <option key={s.value} value={s.value}>{s.label}</option>
+          ))}
         </select>
       </div>
 

@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import { ChevronRight } from 'lucide-react'
 import './Hero.css'
 
 function Hero({
-  title = "Transforma tu presencia digital",
-  subtitle = "Creamos soluciones tecnológicas innovadoras que impulsan el crecimiento de tu negocio.",
-  ctaText = "Contáctanos",
+  title = "Software a la medida para hacer crecer tu negocio",
+  subtitle = "Somos un equipo de desarrolladores en Puebla. Diseñamos y construimos sitios web, apps y sistemas que resuelven problemas reales de tu negocio.",
+  ctaText = "Cotiza tu proyecto",
   ctaLink = "/contact",
 }) {
   const canvasRef = useRef(null)
@@ -104,9 +103,9 @@ function Hero({
     }
 
     const color = hexToRgb(getAccentColor())
-    const particleCount = Math.min(300, Math.floor((canvas.width * canvas.height) / 2500))
 
     const init = () => {
+      const particleCount = Math.min(300, Math.floor((canvas.width * canvas.height) / 2500))
       particles = []
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle())
@@ -125,10 +124,10 @@ function Hero({
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
           const dy = particles[i].y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
+          const distSq = dx * dx + dy * dy
 
-          if (dist < 140) {
-            const opacity = (1 - dist / 140) * 0.25
+          if (distSq < 19600) {
+            const opacity = (1 - Math.sqrt(distSq) / 140) * 0.25
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
@@ -153,21 +152,45 @@ function Hero({
       mouseY = -9999
     }
 
+    let running = false
+    const start = () => {
+      if (running) return
+      running = true
+      animate()
+    }
+    const stop = () => {
+      running = false
+      cancelAnimationFrame(animationId)
+    }
+
     resize()
     init()
-    animate()
 
+    let lastWidth = canvas.width
     const ro = new ResizeObserver(() => {
       resize()
+      // Solo regenerar si cambia el ancho (evita saltos al ocultarse la barra del navegador móvil)
+      if (canvas.width !== lastWidth) {
+        lastWidth = canvas.width
+        init()
+      }
     })
     ro.observe(canvas)
+
+    // Pausar la animación cuando el hero no está visible
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) start()
+      else stop()
+    })
+    io.observe(canvas)
 
     canvas.addEventListener('mousemove', handleMouse)
     canvas.addEventListener('mouseleave', handleLeave)
 
     return () => {
-      cancelAnimationFrame(animationId)
+      stop()
       ro.disconnect()
+      io.disconnect()
       canvas.removeEventListener('mousemove', handleMouse)
       canvas.removeEventListener('mouseleave', handleLeave)
     }
@@ -179,19 +202,15 @@ function Hero({
       <div className="hero__overlay" />
       <div className="hero__container container">
         <div className="hero__content">
-          <span className="badge">Soluciones Digitales</span>
+          <span className="badge">Desarrollo de software</span>
           <h1 className="hero__title">{title}</h1>
           <p className="hero__subtitle">{subtitle}</p>
           <div className="hero__cta">
-            <Link to={ctaLink}>
-              <Button variant="primary" size="large">
-                {ctaText}
-                <ChevronRight size={18} />
-              </Button>
-            </Link>
-            <Link to="/projects">
-              <Button variant="outline" size="large">Ver proyectos</Button>
-            </Link>
+            <Button to={ctaLink} variant="primary" size="large">
+              {ctaText}
+              <ChevronRight size={18} />
+            </Button>
+            <Button to="/projects" variant="outline" size="large">Ver portafolio</Button>
           </div>
         </div>
       </div>
