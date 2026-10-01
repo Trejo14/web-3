@@ -90,3 +90,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* El footer siempre es oscuro: el logo necesita colores claros en ambos temas */
+.footer .logo__mark {
+  color: #a5b4fc;
+}
+
+.footer .logo__text {
+  background: linear-gradient(135deg, #fafafa, #a5b4fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+}

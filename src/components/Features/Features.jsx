@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { Zap, Shield, DollarSign, Target } from 'lucide-react'
+import Reveal from '../Reveal/Reveal'
 import './Features.css'
 
 function Features({ items = [] }) {
@@ -13,7 +14,7 @@ function Features({ items = [] }) {
   const features = items.length > 0 ? items : defaultItems
 
   return (
-    <div className="features">
+    <Reveal stagger className="features">
       {features.map((item) => (
         <div key={item.title} className="features__item">
           <div className="features__icon">{item.icon}</div>
@@ -21,7 +22,7 @@ function Features({ items = [] }) {
           <p className="features__description">{item.description}</p>
         </div>
       ))}
-    </div>
+    </Reveal>
   )
 }
 

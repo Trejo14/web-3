@@ -1,0 +1,36 @@
+/* Se usa animation con fill-mode "backwards" (no transition) para no interferir
+   con los efectos hover de las tarjetas una vez terminada la animación */
+.reveal:not(.is-visible),
+.reveal-group:not(.is-visible) > * {
+  opacity: 0;
+}
+
+.reveal.is-visible,
+.reveal-group.is-visible > * {
+  animation: reveal-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.reveal-group.is-visible > :nth-child(2) { animation-delay: 90ms; }
+.reveal-group.is-visible > :nth-child(3) { animation-delay: 180ms; }
+.reveal-group.is-visible > :nth-child(4) { animation-delay: 270ms; }
+.reveal-group.is-visible > :nth-child(5) { animation-delay: 360ms; }
+.reveal-group.is-visible > :nth-child(n + 6) { animation-delay: 450ms; }
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-group > * {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

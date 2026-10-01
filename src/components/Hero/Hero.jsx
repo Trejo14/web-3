@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button/Button'
-import { ChevronRight } from 'lucide-react'
+import CodeWindow from '../CodeWindow/CodeWindow'
+import { ChevronRight, MapPin, MessageSquare, Zap } from 'lucide-react'
 import './Hero.css'
 
 function Hero({
@@ -212,6 +213,14 @@ function Hero({
             </Button>
             <Button to="/projects" variant="outline" size="large">Ver portafolio</Button>
           </div>
+          <ul className="hero__highlights">
+            <li><MessageSquare size={16} /> Consulta gratuita</li>
+            <li><Zap size={16} /> Trato directo con el equipo</li>
+            <li><MapPin size={16} /> Puebla, México</li>
+          </ul>
+        </div>
+        <div className="hero__visual">
+          <CodeWindow />
         </div>
       </div>
     </section>

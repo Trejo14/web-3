@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { GITHUB_URL } from '../config/contact'
 
-const GITHUB_USER = 'Trejo14'
+const GITHUB_USER = GITHUB_URL.split('/').pop()
 
 // Repos ocultos del portafolio (por nombre exacto)
 const HIDDEN_REPOS = [GITHUB_USER, 'WEB']
@@ -71,7 +72,7 @@ function useGithubRepos() {
     return () => { cancelled = true }
   }, [])
 
-  return { projects, loading, error, githubUrl: `https://github.com/${GITHUB_USER}` }
+  return { projects, loading, error, githubUrl: GITHUB_URL }
 }
 
 export default useGithubRepos

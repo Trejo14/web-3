@@ -4,6 +4,7 @@ import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Button from '../../components/Button/Button'
+import Reveal from '../../components/Reveal/Reveal'
 import './Services.css'
 
 function Services() {
@@ -42,11 +43,11 @@ function Services() {
             title="Explora nuestros servicios"
             subtitle="Desde desarrollo web hasta consultoría estratégica"
           />
-          <div className="grid-3">
+          <Reveal stagger className="grid-3">
             {services.map((service) => (
               <ServiceCard key={service.id} {...service} />
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -62,13 +63,13 @@ function Services() {
 
       <section className="cta-section">
         <div className="container">
-          <div className="cta-section__content">
+          <Reveal className="cta-section__content">
             <h2>¿Listo para empezar tu proyecto?</h2>
             <p>Contáctanos hoy y recibe una consulta gratuita</p>
             <Button to="/contact" variant="primary" size="large">
               Contáctanos <ArrowRight size={18} />
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

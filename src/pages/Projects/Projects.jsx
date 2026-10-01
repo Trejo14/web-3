@@ -6,6 +6,7 @@ import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Button from '../../components/Button/Button'
 import { GithubIcon } from '../../components/Icons/BrandIcons'
+import Reveal from '../../components/Reveal/Reveal'
 import './Projects.css'
 
 function SkeletonCard() {
@@ -85,11 +86,11 @@ function Projects() {
             </div>
           )}
           {!loading && !error && (
-            <div className="grid-projects">
+            <Reveal stagger className="grid-projects">
               {visible.map((project) => (
                 <ProjectCard key={project.id} {...project} />
               ))}
-            </div>
+            </Reveal>
           )}
           {!loading && !error && (
             <div className="projects__more">
@@ -103,13 +104,13 @@ function Projects() {
 
       <section className="cta-section">
         <div className="container">
-          <div className="cta-section__content">
+          <Reveal className="cta-section__content">
             <h2>¿Quieres un proyecto como estos?</h2>
             <p>Cuéntanos tu idea y te enviamos una propuesta sin compromiso.</p>
             <Button to="/contact" variant="primary" size="large">
               Cotizar proyecto <ArrowRight size={18} />
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

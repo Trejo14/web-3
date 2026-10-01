@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import { CheckCircle2, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { CheckCircle2, Mail, MapPin } from 'lucide-react'
+import { WhatsappIcon } from '../../components/Icons/BrandIcons'
+import { EMAIL, WHATSAPP_URL } from '../../config/contact'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Button from '../../components/Button/Button'
+import Reveal from '../../components/Reveal/Reveal'
 import './Contact.css'
 
 function Contact() {
@@ -14,8 +17,8 @@ function Contact() {
   const handleReset = () => setFormSubmitted(false)
 
   const contactInfo = [
-    { id: 'email', icon: <Mail size={20} />, title: "Email", description: "birdstackmx@gmail.com", href: "mailto:birdstackmx@gmail.com" },
-    { id: 'whatsapp', icon: <MessageCircle size={20} />, title: "WhatsApp", description: "+52 222 841 0082", href: "https://wa.me/522228410082" },
+    { id: 'email', icon: <Mail size={20} />, title: "Email", description: EMAIL, href: `mailto:${EMAIL}` },
+    { id: 'whatsapp', icon: <WhatsappIcon size={20} />, title: "WhatsApp", description: "+52 222 841 0082", href: WHATSAPP_URL },
     { id: 'location', icon: <MapPin size={20} />, title: "Ubicación", description: "Puebla, México · Remoto" },
   ]
 
@@ -33,7 +36,7 @@ function Contact() {
 
       <section className="section">
         <div className="container">
-          <div className="contact__info-grid">
+          <Reveal stagger className="contact__info-grid">
             {contactInfo.map((item) => {
               const content = (
                 <>
@@ -55,7 +58,7 @@ function Contact() {
                 <div key={item.id} className="contact__info-card">{content}</div>
               )
             })}
-          </div>
+          </Reveal>
         </div>
       </section>
 

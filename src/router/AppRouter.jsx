@@ -5,6 +5,7 @@ import About from '../pages/About/About'
 import Services from '../pages/Services/Services'
 import Projects from '../pages/Projects/Projects'
 import Contact from '../pages/Contact/Contact'
+import Review from '../pages/Review/Review'
 import NotFound from '../pages/NotFound/NotFound'
 
 function AppRouter() {
@@ -16,6 +17,7 @@ function AppRouter() {
         <Route path="services" element={<Services />} />
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="opinion" element={<Review />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

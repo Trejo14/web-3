@@ -2,13 +2,14 @@ import { Code2, Smartphone, Cloud, ArrowRight } from 'lucide-react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import useGithubRepos from '../../hooks/useGithubRepos'
 import Hero from '../../components/Hero/Hero'
+import TechMarquee from '../../components/TechMarquee/TechMarquee'
 import Features from '../../components/Features/Features'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import TestimonialsCarousel from '../../components/TestimonialsCarousel/TestimonialsCarousel'
-import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import Button from '../../components/Button/Button'
+import Reveal from '../../components/Reveal/Reveal'
 import './Home.css'
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
   return (
     <div className="home">
       <Hero />
+      <TechMarquee />
 
       <section className="section">
         <div className="container">
@@ -37,11 +39,11 @@ function Home() {
             title="¿Qué podemos construir para ti?"
             subtitle="Desde tu primera página web hasta el sistema que automatiza tu operación"
           />
-          <div className="grid-3">
+          <Reveal stagger className="grid-3">
             {services.map((service) => (
               <ServiceCard key={service.id} {...service} />
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -52,11 +54,11 @@ function Home() {
               title="Proyectos destacados"
               subtitle="Una muestra de nuestro trabajo reciente"
             />
-            <div className="grid-projects">
+            <Reveal stagger className="grid-projects">
               {featured.map((project) => (
                 <ProjectCard key={project.id} {...project} />
               ))}
-            </div>
+            </Reveal>
             <div className="home__more">
               <Button to="/projects" variant="outline">
                 Ver todos los proyectos <ArrowRight size={18} />
@@ -66,37 +68,17 @@ function Home() {
         </section>
       )}
 
-      <section className="section section-alt">
-        <div className="container">
-          <SectionTitle
-            title="Qué dicen nuestros clientes"
-            subtitle="La satisfacción de nuestros clientes es nuestra mejor recompensa"
-          />
-          <TestimonialsCarousel />
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionTitle
-            title="Deja tu opinión"
-            subtitle="Tu feedback nos ayuda a mejorar"
-          />
-          <div className="review-form-wrapper">
-            <ReviewForm />
-          </div>
-        </div>
-      </section>
+      <TestimonialsCarousel />
 
       <section className="cta-section">
         <div className="container">
-          <div className="cta-section__content">
+          <Reveal className="cta-section__content">
             <h2>¿Tienes un proyecto en mente?</h2>
             <p>Agenda una consulta gratuita y conviértelo en realidad.</p>
             <Button to="/contact" variant="primary" size="large">
               Hablemos <ArrowRight size={18} />
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

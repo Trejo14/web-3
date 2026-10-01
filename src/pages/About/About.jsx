@@ -3,6 +3,7 @@ import useDocumentTitle from '../../hooks/useDocumentTitle'
 import Features from '../../components/Features/Features'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Button from '../../components/Button/Button'
+import Reveal from '../../components/Reveal/Reveal'
 import './About.css'
 
 function About() {
@@ -43,7 +44,7 @@ function About() {
 
       <section className="section section-alt">
         <div className="container">
-          <div className="about__mission-grid">
+          <Reveal stagger className="about__mission-grid">
             <div className="about__mission-item">
               <h3>Misión</h3>
               <p>Ayudar a negocios y emprendedores a digitalizarse con software confiable, a un precio justo y con trato directo.</p>
@@ -56,7 +57,7 @@ function About() {
               <h3>Cómo trabajamos</h3>
               <p>Comunicación directa, avances visibles durante todo el proyecto y soporte después de la entrega.</p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>
