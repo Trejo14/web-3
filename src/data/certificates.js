@@ -20,6 +20,17 @@ const CERTIFICATE_INFO = {
   //   date: '2025-08',      // AAAA-MM
   //   credentialUrl: '',    // enlace de verificación (opcional)
   // },
+  'aws-academy-cloud-foundations': {
+    title: 'AWS Academy Graduate – Cloud Foundations',
+    issuer: 'AWS Academy',
+    date: '2025-11',
+    credentialUrl: 'https://www.credly.com/go/viEqjrNM',
+  },
+  'hacking-etico-big-school': {
+    title: 'Hacking Ético: de 0 a Hackear Aplicaciones',
+    issuer: 'BIG school',
+    date: '2026-10',
+  },
 }
 
 const pdfModules = import.meta.glob('../assets/certificados/*.{pdf,PDF}', {
