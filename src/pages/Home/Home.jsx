@@ -1,6 +1,6 @@
 import { Code2, Smartphone, Cloud, ArrowRight } from 'lucide-react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
-import useGithubRepos from '../../hooks/useGithubRepos'
+import projects from '../../data/projects'
 import Hero from '../../components/Hero/Hero'
 import TechMarquee from '../../components/TechMarquee/TechMarquee'
 import Features from '../../components/Features/Features'
@@ -14,7 +14,6 @@ import './Home.css'
 
 function Home() {
   useDocumentTitle('')
-  const { projects, loading, error } = useGithubRepos()
   const featured = projects.slice(0, 3)
   const services = [
     { id: 'web', icon: <Code2 size={40} />, title: "Desarrollo Web", description: "Sitios web modernos y aplicaciones con las últimas tecnologías.", features: ["React, Vue, Angular", "Rendimiento optimizado", "Responsive design"], actionText: "Cotizar" },
@@ -47,7 +46,7 @@ function Home() {
         </div>
       </section>
 
-      {!loading && !error && featured.length > 0 && (
+      {featured.length > 0 && (
         <section className="section">
           <div className="container">
             <SectionTitle
@@ -56,7 +55,7 @@ function Home() {
             />
             <Reveal stagger className="grid-projects">
               {featured.map((project) => (
-                <ProjectCard key={project.id} {...project} />
+                <ProjectCard key={project.slug} {...project} />
               ))}
             </Reveal>
             <div className="home__more">

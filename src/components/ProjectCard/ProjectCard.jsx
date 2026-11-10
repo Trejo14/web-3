@@ -1,24 +1,46 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Star, ExternalLink } from 'lucide-react'
-import { GithubIcon } from '../Icons/BrandIcons'
+import { Images, ExternalLink, Maximize2, Lock } from 'lucide-react'
+import Lightbox from '../Lightbox/Lightbox'
 import './ProjectCard.css'
 
-function ProjectCard({ title, image, description, tags = [], link = "#", demo, stars }) {
+function ProjectCard({ title, description, tags = [], demo, screens = [], confidential = false }) {
+  const [open, setOpen] = useState(false)
+  const cover = screens[0]
+
   return (
     <article className="project-card">
-      <div className="project-card__image">
-        {image ? <img src={image} alt={`Captura de ${title}`} loading="lazy" /> : (
+      {cover ? (
+        <button
+          type="button"
+          className="project-card__image project-card__image--button"
+          onClick={() => setOpen(true)}
+          aria-label={`Ver pantallas de ${title}`}
+        >
+          <img src={cover} alt={`Pantalla principal de ${title}`} loading="lazy" />
+          <span className="project-card__overlay" aria-hidden="true">
+            <Maximize2 size={20} /> Ver pantallas
+          </span>
+          {screens.length > 1 && (
+            <span className="project-card__count" aria-hidden="true">
+              <Images size={14} /> {screens.length}
+            </span>
+          )}
+        </button>
+      ) : (
+        <div className="project-card__image">
           <div className="project-card__placeholder" aria-hidden="true">
-            <span>{title.charAt(0).toUpperCase()}</span>
+            <span>{title.charAt(0)}</span>
           </div>
-        )}
-        {stars > 0 && (
-          <span className="project-card__stars" aria-label={`${stars} estrellas en GitHub`}>
-            <Star size={14} fill="currentColor" /> {stars}
+        </div>
+      )}
+
+      <div className="project-card__content">
+        {confidential && (
+          <span className="project-card__private" title="Proyecto de cliente: nombre y datos reales omitidos">
+            <Lock size={12} /> Cliente confidencial
           </span>
         )}
-      </div>
-      <div className="project-card__content">
         <h3 className="project-card__title">{title}</h3>
         <p className="project-card__description">{description}</p>
         <div className="project-card__meta">
@@ -26,29 +48,34 @@ function ProjectCard({ title, image, description, tags = [], link = "#", demo, s
             <span key={tag} className="project-card__tag">{tag}</span>
           ))}
         </div>
-        <div className="project-card__footer">
-          <a href={link} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver código de ${title} en GitHub`}>
-            <GithubIcon size={14} /> Código
-          </a>
-          {demo && (
-            <a href={demo} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver demo de ${title}`}>
-              Ver demo <ExternalLink size={14} />
-            </a>
-          )}
-        </div>
+        {(screens.length > 0 || demo) && (
+          <div className="project-card__footer">
+            {screens.length > 0 && (
+              <button type="button" className="project-card__link" onClick={() => setOpen(true)}>
+                <Images size={14} /> {screens.length === 1 ? 'Ver pantalla' : `Ver ${screens.length} pantallas`}
+              </button>
+            )}
+            {demo && (
+              <a href={demo} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver ${title} en vivo`}>
+                Ver en vivo <ExternalLink size={14} />
+              </a>
+            )}
+          </div>
+        )}
       </div>
+
+      {open && <Lightbox title={title} images={screens} onClose={() => setOpen(false)} />}
     </article>
   )
 }
 
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
-  image: PropTypes.string,
   description: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
-  link: PropTypes.string,
   demo: PropTypes.string,
-  stars: PropTypes.number,
+  screens: PropTypes.arrayOf(PropTypes.string),
+  confidential: PropTypes.bool,
 }
 
 export default ProjectCard

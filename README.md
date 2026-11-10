@@ -139,3 +139,17 @@ Este proyecto fue desarrollado por:
 *   **Daniel Trejo**
 *   **Angel Choperena**
 *   **Jose Luis Resendiz**
+
+---
+
+## 🖼️ Capturas de proyectos y 📜 certificados
+
+No hace falta tocar código para actualizarlos:
+
+| Qué | Dónde ponerlo | Notas |
+|---|---|---|
+| Capturas de proyectos | `src/assets/proyectos/` (todas en la misma carpeta) | Nómbralas `proyecto-1.png`, `proyecto-2.png`… El número da el orden; la 1 es la portada. Un nombre nuevo crea el proyecto solo. |
+| Descripción / etiquetas / demo de un proyecto | `src/data/projects.js` | El `slug` debe coincidir con el nombre de las capturas. |
+| Certificado | `src/assets/certificados/` | Solo copia el PDF. El título sale del nombre del archivo. |
+| Miniatura de certificado (opcional) | Mismo nombre que el PDF, en la misma carpeta | `curso-react.pdf` + `curso-react.png` |
+| Emisor / fecha / enlace de verificación (opcional) | `CERTIFICATE_INFO` en `src/data/certificates.js` | |

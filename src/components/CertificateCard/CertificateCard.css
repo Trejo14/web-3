@@ -1,0 +1,131 @@
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.cert-card:hover {
+  box-shadow: var(--shadow-xl);
+  border-color: var(--accent-ring);
+  transform: translateY(-4px);
+}
+
+.cert-card__preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.414 / 1; /* proporción de una hoja A4 horizontal */
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.cert-card__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cert-card__placeholder {
+  position: absolute;
+  inset: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed var(--accent-ring);
+  border-radius: var(--radius-sm);
+  background:
+    radial-gradient(ellipse at 50% 40%, var(--accent-ring) 0%, transparent 70%),
+    var(--accent-light);
+  color: var(--accent);
+}
+
+.cert-card__placeholder-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+}
+
+.cert-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(9, 9, 11, 0.45);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.cert-card__preview:hover .cert-card__overlay,
+.cert-card__preview:focus-visible .cert-card__overlay {
+  opacity: 1;
+}
+
+.cert-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+
+.cert-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.cert-card__meta {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.cert-card__meta::first-letter {
+  text-transform: uppercase;
+}
+
+.cert-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.cert-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cert-card__link:hover {
+  color: var(--accent-dark);
+}

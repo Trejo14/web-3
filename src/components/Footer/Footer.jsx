@@ -16,6 +16,7 @@ function Footer() {
         { path: '/about', label: 'Nosotros' },
         { path: '/services', label: 'Servicios' },
         { path: '/projects', label: 'Proyectos' },
+        { path: '/certificados', label: 'Certificados' },
         { path: '/contact', label: 'Contacto' },
       ],
     },

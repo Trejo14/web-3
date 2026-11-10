@@ -1,42 +1,19 @@
 import { useState, useMemo } from 'react'
-import { AlertCircle, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
-import useGithubRepos from '../../hooks/useGithubRepos'
+import projects from '../../data/projects'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import Button from '../../components/Button/Button'
-import { GithubIcon } from '../../components/Icons/BrandIcons'
 import Reveal from '../../components/Reveal/Reveal'
 import './Projects.css'
 
-function SkeletonCard() {
-  return (
-    <div className="skeleton-card" aria-hidden="true">
-      <div className="skeleton-card__image skeleton-pulse" />
-      <div className="skeleton-card__body">
-        <div className="skeleton-card__title skeleton-pulse" />
-        <div className="skeleton-card__line skeleton-pulse" />
-        <div className="skeleton-card__line skeleton-pulse skeleton-card__line--short" />
-        <div className="skeleton-card__tags">
-          <div className="skeleton-card__tag skeleton-pulse" />
-          <div className="skeleton-card__tag skeleton-pulse" />
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function Projects() {
   useDocumentTitle('Proyectos')
-  const { projects, loading, error, githubUrl } = useGithubRepos()
   const [filter, setFilter] = useState('Todos')
 
-  const languages = useMemo(() => {
-    const unique = [...new Set(projects.map(p => p.language).filter(Boolean))]
-    return ['Todos', ...unique]
-  }, [projects])
-
-  const visible = filter === 'Todos' ? projects : projects.filter(p => p.language === filter)
+  const tags = useMemo(() => ['Todos', ...new Set(projects.flatMap(p => p.tags))], [])
+  const visible = filter === 'Todos' ? projects : projects.filter(p => p.tags.includes(filter))
 
   return (
     <div className="projects">
@@ -45,7 +22,7 @@ function Projects() {
           <span className="badge">Portafolio</span>
           <h1 className="projects__title">Nuestro trabajo</h1>
           <p className="projects__subtitle">
-            Proyectos que hemos diseñado y programado, con su código disponible para que veas cómo trabajamos.
+            Proyectos que hemos diseñado y programado. Mira sus pantallas reales y cómo se ven terminados.
           </p>
         </div>
       </section>
@@ -54,51 +31,28 @@ function Projects() {
         <div className="container">
           <SectionTitle
             title="Proyectos recientes"
-            subtitle="Código real, disponible públicamente en GitHub"
+            subtitle="Así se ven por dentro: haz clic en cualquiera para recorrer sus pantallas"
           />
-          {!loading && !error && projects.length >= 6 && languages.length > 2 && (
+          {projects.length >= 6 && tags.length > 2 && (
             <div className="projects__filters" role="group" aria-label="Filtrar por tecnología">
-              {languages.map(lang => (
+              {tags.map(tag => (
                 <button
-                  key={lang}
+                  key={tag}
                   type="button"
-                  className={`projects__filter ${filter === lang ? 'projects__filter--active' : ''}`}
-                  onClick={() => setFilter(lang)}
-                  aria-pressed={filter === lang}
+                  className={`projects__filter ${filter === tag ? 'projects__filter--active' : ''}`}
+                  onClick={() => setFilter(tag)}
+                  aria-pressed={filter === tag}
                 >
-                  {lang}
+                  {tag}
                 </button>
               ))}
             </div>
           )}
-          {loading && (
-            <div className="grid-3" aria-busy="true">
-              {Array.from({ length: 6 }, (_, i) => <SkeletonCard key={i} />)}
-            </div>
-          )}
-          {error && (
-            <div className="projects__status projects__status--error">
-              <AlertCircle size={24} />
-              <p>No se pudieron cargar los proyectos en este momento.</p>
-              <Button href={githubUrl} variant="outline">
-                <GithubIcon size={16} /> Ver en GitHub
-              </Button>
-            </div>
-          )}
-          {!loading && !error && (
-            <Reveal stagger className="grid-projects">
-              {visible.map((project) => (
-                <ProjectCard key={project.id} {...project} />
-              ))}
-            </Reveal>
-          )}
-          {!loading && !error && (
-            <div className="projects__more">
-              <Button href={githubUrl} variant="outline">
-                <GithubIcon size={16} /> Ver todo en GitHub
-              </Button>
-            </div>
-          )}
+          <Reveal stagger className="grid-projects">
+            {visible.map((project) => (
+              <ProjectCard key={project.slug} {...project} />
+            ))}
+          </Reveal>
         </div>
       </section>
 
