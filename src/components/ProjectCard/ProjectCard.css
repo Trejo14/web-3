@@ -182,3 +182,9 @@
   font-size: 12px;
   font-weight: 600;
 }
+
+.project-card__links {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}

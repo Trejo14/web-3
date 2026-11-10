@@ -2,9 +2,10 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Images, ExternalLink, Maximize2, Lock } from 'lucide-react'
 import Lightbox from '../Lightbox/Lightbox'
+import { GithubIcon } from '../Icons/BrandIcons'
 import './ProjectCard.css'
 
-function ProjectCard({ title, description, tags = [], demo, screens = [], confidential = false }) {
+function ProjectCard({ title, description, tags = [], repo, demo, screens = [], confidential = false }) {
   const [open, setOpen] = useState(false)
   const cover = screens[0]
 
@@ -48,18 +49,25 @@ function ProjectCard({ title, description, tags = [], demo, screens = [], confid
             <span key={tag} className="project-card__tag">{tag}</span>
           ))}
         </div>
-        {(screens.length > 0 || demo) && (
+        {(repo || demo || screens.length > 0) && (
           <div className="project-card__footer">
             {screens.length > 0 && (
               <button type="button" className="project-card__link" onClick={() => setOpen(true)}>
-                <Images size={14} /> {screens.length === 1 ? 'Ver pantalla' : `Ver ${screens.length} pantallas`}
+                <Images size={14} /> Pantallas
               </button>
             )}
-            {demo && (
-              <a href={demo} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver ${title} en vivo`}>
-                Ver en vivo <ExternalLink size={14} />
-              </a>
-            )}
+            <div className="project-card__links">
+              {repo && (
+                <a href={repo} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver código de ${title} en GitHub`}>
+                  <GithubIcon size={14} /> Código
+                </a>
+              )}
+              {demo && (
+                <a href={demo} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`Ver ${title} en vivo`}>
+                  En vivo <ExternalLink size={14} />
+                </a>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -73,6 +81,7 @@ ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
+  repo: PropTypes.string,
   demo: PropTypes.string,
   screens: PropTypes.arrayOf(PropTypes.string),
   confidential: PropTypes.bool,

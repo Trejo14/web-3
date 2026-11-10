@@ -17,6 +17,7 @@
 //      mi-tienda-1.jpg      ← proyecto nuevo: aparece solo
 //
 //  - El número define el orden; la #1 es la portada.
+//  - `repo`: enlace al código (solo repos públicos). `demo`: sitio en vivo.
 //  - Si el nombre coincide con un `slug` de abajo, usa su título,
 //    descripción y etiquetas. Si no, se crea el proyecto
 //    automáticamente con el nombre del archivo como título
@@ -29,20 +30,23 @@ const PROJECTS = [
     title: 'Mis Ayeres',
     description: 'Sitio y sistema de gestión para un restaurante: menú, promociones, noches temáticas con cantantes y reservaciones en línea. Incluye panel de administración con dashboard, control de mesas, clientes, eventos, quejas y mensajes, con inicio de sesión seguro y subida de imágenes.',
     tags: ['React', 'Node.js', 'Express', 'PostgreSQL'],
-    demo: null,
+    repo: 'https://github.com/Trejo14/misayeres',
+    demo: 'https://misayeres.com.mx',
+  },
+  {
+    slug: 'birdcam',
+    title: 'Birdcam · Photoboot',
+    description: 'Cabina de fotos con IA para eventos: app de escritorio que captura, transforma la foto con IA, genera un QR para descargarla e imprime al instante en impresora térmica. Funciona sin internet y con varias cabinas; incluye sitio con suscripciones, panel de administración y galería por evento.',
+    tags: ['React', 'Tauri', 'Next.js', 'NestJS'],
+    repo: 'https://github.com/Trejo14/photoboot',
+    demo: 'https://landing-production-8720.up.railway.app',
   },
   {
     slug: 'metro-arquitectura',
     title: 'Metro Arquitectura',
     description: 'Presentación web interactiva sobre arquitecturas de software con forma de mapa del metro: cada línea es una familia de arquitecturas y cada estación una arquitectura. Incluye diagramas C4, simulador de tráfico "hora pico", línea del tiempo, quiz y modo claro/oscuro.',
     tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    demo: null,
-  },
-  {
-    slug: 'birdcam',
-    title: 'Birdcam',
-    description: 'Photobooth digital para eventos: app de escritorio que toma fotos con marco, genera un QR para descargarlas e imprime al instante en impresora térmica. Incluye sitio público con suscripciones, panel de administración y galería de fotos por evento.',
-    tags: ['React', 'Tauri', 'Next.js', 'NestJS'],
+    repo: 'https://github.com/Trejo14/metro-arquitectura',
     demo: null,
   },
   {
@@ -82,13 +86,15 @@ const PROJECTS = [
     title: 'BirdStack',
     description: 'Nuestro sitio corporativo: SPA en React con API propia en Node.js, portafolio, certificados, reseñas moderadas guardadas en PostgreSQL y formulario de contacto con EmailJS.',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Railway'],
-    demo: null,
+    repo: 'https://github.com/Trejo14/web-3',
+    demo: 'https://birdstack.net',
   },
   {
     slug: 'pronosticos-mundial',
     title: 'Pronósticos Mundial',
     description: 'API REST en Django que recopila y guarda datos deportivos de ESPN (equipos, partidos y resultados de más de 15 deportes), con actualización automática en segundo plano y documentación interactiva de sus endpoints.',
     tags: ['Python', 'Django', 'PostgreSQL', 'Docker'],
+    repo: 'https://github.com/Trejo14/pronosticos-mundial',
     demo: null,
   },
   {
@@ -96,7 +102,8 @@ const PROJECTS = [
     title: 'Elite Spaces',
     description: 'Sitio web para una inmobiliaria boutique: presentación de la empresa, catálogo de propiedades en venta, blog y formularios de contacto y compra. Hecho a mano con HTML5 y CSS3.',
     tags: ['HTML', 'CSS'],
-    demo: null,
+    repo: 'https://github.com/Trejo14/WEB',
+    demo: 'https://trejo14.github.io/WEB/',
   },
 ]
 
@@ -134,7 +141,7 @@ const known = new Set(PROJECTS.map(p => p.slug))
 const discovered = Object.keys(screensBySlug)
   .filter(slug => !known.has(slug))
   .sort()
-  .map(slug => ({ slug, title: toTitle(slug), description: '', tags: [], demo: null }))
+  .map(slug => ({ slug, title: toTitle(slug), description: '', tags: [], repo: null, demo: null }))
 
 const projects = [...PROJECTS, ...discovered].map((project) => ({
   ...project,

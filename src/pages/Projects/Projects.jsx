@@ -12,7 +12,13 @@ function Projects() {
   useDocumentTitle('Proyectos')
   const [filter, setFilter] = useState('Todos')
 
-  const tags = useMemo(() => ['Todos', ...new Set(projects.flatMap(p => p.tags))], [])
+  // Solo tecnologías que aparecen en 2+ proyectos, de la más usada a la menos
+  const tags = useMemo(() => {
+    const count = {}
+    projects.flatMap(p => p.tags).forEach(t => { count[t] = (count[t] || 0) + 1 })
+    const common = Object.keys(count).filter(t => count[t] > 1).sort((a, b) => count[b] - count[a])
+    return ['Todos', ...common]
+  }, [])
   const visible = filter === 'Todos' ? projects : projects.filter(p => p.tags.includes(filter))
 
   return (
