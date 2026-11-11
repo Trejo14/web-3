@@ -50,6 +50,14 @@ const PROJECTS = [
     demo: null,
   },
   {
+    slug: 'comepuntos',
+    title: 'ComePuntos',
+    description: 'Plataforma para aprender C# básico armando un videojuego, con lecciones cortas al estilo Duolingo. Cada lección enseña un concepto (variables, if, métodos, ciclos, arreglos…) y al final el alumno escribe en C# la pieza que le falta al juego, que se actualiza en vivo. Incluye ejercicios para usar bien la IA y un proyecto de Visual Studio para correr el código.',
+    tags: ['C#', '.NET', 'JavaScript', 'HTML'],
+    repo: 'https://github.com/Trejo14/comepuntos',
+    demo: null,
+  },
+  {
     slug: 'sistema-fiscal',
     title: 'Sistema de Control Fiscal',
     confidential: true,
