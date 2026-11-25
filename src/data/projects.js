@@ -58,6 +58,13 @@ const PROJECTS = [
     demo: null,
   },
   {
+    slug: 'sportspro',
+    title: 'SportsPro · Academia de Fútbol',
+    description: 'Sitio y plataforma para una academia de fútbol: páginas públicas con programas, horarios, entrenadores y precios, más formulario de clase de prueba. Incluye panel con tres roles (admin, entrenadores y papás): fichas de jugadores con datos médicos, evaluaciones con gráfica de evolución, asistencia, galería por equipo, avisos y pagos con comprobante.',
+    tags: ['Astro', 'TypeScript', 'Tailwind', 'PostgreSQL'],
+    demo: null,
+  },
+  {
     slug: 'sistema-fiscal',
     title: 'Sistema de Control Fiscal',
     confidential: true,

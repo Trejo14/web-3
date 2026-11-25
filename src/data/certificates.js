@@ -31,6 +31,12 @@ const CERTIFICATE_INFO = {
     issuer: 'BIG school',
     date: '2026-10',
   },
+  'sap-end-to-end-business-processes': {
+    title: 'Exploring End-to-End Business Processes in SAP',
+    issuer: 'SAP Learning',
+    date: '2026-11',
+    credentialUrl: 'https://badger.learning.sap.com/verify/xocuh-kamur-mocyl-pumed-bahuc',
+  },
 }
 
 const pdfModules = import.meta.glob('../assets/certificados/*.{pdf,PDF}', {
