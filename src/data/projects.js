@@ -76,7 +76,7 @@ const PROJECTS = [
     slug: 'portal-cfdi',
     title: 'Portal de Comprobantes Fiscales',
     confidential: true,
-    description: 'Plataforma para un grupo empresarial que centraliza facturas electrónicas (XML y PDF), relaciona pagos y cancelaciones, y da seguimiento a declaraciones anuales por empresa, con roles de usuario y varias organizaciones.',
+    description: 'Plataforma para un grupo empresarial que centraliza facturas electrónicas (XML y PDF) por empresa, con roles de usuario y varias organizaciones. Analiza ingresos y egresos, clientes y proveedores, utilidad o pérdida y coeficiente de utilidad; da seguimiento a pagos, declaraciones y deuda fiscal, y revisa a los proveedores contra la lista 69-B del SAT. Un servicio en Python lee los PDFs que se suben y extrae sus datos.',
     tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Python'],
     demo: null,
   },
